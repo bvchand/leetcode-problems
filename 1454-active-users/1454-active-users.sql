@@ -7,4 +7,5 @@ FROM (SELECT DISTINCT id, login_date,
 JOIN Accounts c ON a.id = c.id 
 GROUP BY a.id, DATE_ADD(a.login_date, INTERVAL -rnk DAY)
 HAVING COUNT(a.id) >= 5
+ORDER BY a.id
 
