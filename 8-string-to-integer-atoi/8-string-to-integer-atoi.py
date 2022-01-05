@@ -6,8 +6,7 @@ class Solution:
         
         n, index, is_negative = 0, 0, False
         
-        INT_MAX = pow(2,31) - 1 
-        INT_MIN = -pow(2,31)
+        INT_MAX, INT_MIN = pow(2,31) - 1, -pow(2,31) 
                
         if s[0] == '-':
             is_negative = True
