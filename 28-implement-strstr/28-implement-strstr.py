@@ -7,12 +7,8 @@ class Solution:
         
         if needle_len > hay_len: return -1
         
-        # i = 0
-        
-        for i in range(0, hay_len-needle_len+1):
-            # print(i, i+needle_len-1)
+        for i in range(hay_len-needle_len+1):
             temp = haystack[i:i+needle_len]
-            # print(temp)
             if temp == needle:
                 return i
             i += 1
