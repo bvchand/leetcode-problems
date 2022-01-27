@@ -1,4 +1,5 @@
 class Solution:
+    # bruteforce
     def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
         products = sorted(products)
         s = ''
