@@ -18,6 +18,7 @@ class Solution:
             prev = curr
             curr = curr.next
             index -= 1
+        
         if prev:    prev.next = curr.next
         else:   head = curr.next
             
