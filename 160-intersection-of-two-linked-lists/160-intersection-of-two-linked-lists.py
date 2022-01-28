@@ -6,6 +6,7 @@
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        # hash table
         nodes_A = set()
         
         while headA:
