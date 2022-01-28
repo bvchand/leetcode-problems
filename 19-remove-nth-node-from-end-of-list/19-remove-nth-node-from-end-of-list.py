@@ -14,16 +14,13 @@ class Solution:
         index = list_len - n
         prev, curr = None, head
         
-        while curr:
-            print(index, curr.val)
-            if prev and index == 0:
-                prev.next = curr.next
-            elif index == 0:
-                head = curr.next
-            else:
-                prev = curr
-                curr = curr.next
+        while index > 0:
+            prev = curr
+            curr = curr.next
             index -= 1
+        if prev:    prev.next = curr.next
+        else:   head = curr.next
+            
         return head
                 
         
