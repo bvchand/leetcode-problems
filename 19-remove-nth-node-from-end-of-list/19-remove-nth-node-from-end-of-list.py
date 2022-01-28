@@ -12,8 +12,8 @@ class Solution:
             curr = curr.next
         
         index = list_len - n
-        print(index)
         prev, curr = None, head
+        
         while curr:
             print(index, curr.val)
             if prev and index == 0:
