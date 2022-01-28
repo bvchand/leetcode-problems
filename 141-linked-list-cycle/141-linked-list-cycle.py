@@ -16,5 +16,6 @@ class Solution:
                 fast = fast.next.next
             else:
                 return True
+        
         return False
         
