@@ -24,13 +24,5 @@ class Solution:
             elif stack[-1] == curr.val:  stack.pop() 
             curr = curr.next
         return len(stack) == 0
-        
-        
-        
-        # while curr:
-        #     if len(stack) == 0 or stack[-1] != curr.val:
-        #         stack.append(curr.val)
-        #     else:  stack.pop() 
-        #     curr = curr.next
-        # return len(stack) == 0
+
             
