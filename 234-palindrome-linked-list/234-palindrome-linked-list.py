@@ -19,7 +19,7 @@ class Solution:
             if odd and i == length//2:
                 curr = curr.next
                 continue
-            if i < length//2:
+            elif i < length//2:
                 stack.append(curr.val)
             elif stack[-1] == curr.val:  stack.pop() 
             curr = curr.next
