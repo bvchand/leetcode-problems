@@ -14,7 +14,7 @@ class Solution:
         copy_curr = dummyhead
         node_hash = {}
         
-        # traverse using the next pointer and create a hash table for mapping copied nodes to original nodes
+        # traverse using the next pointer and map copied nodes to original nodes
         while curr:
             copy_curr.next = Node(curr.val)
             node_hash[curr] = copy_curr.next
