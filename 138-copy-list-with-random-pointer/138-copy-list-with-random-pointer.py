@@ -14,20 +14,17 @@ class Solution:
         copy_curr = dummyhead
         node_hash = {}
         
-        # traverse using the next pointer and map copied nodes to original nodes
+        # Pass-1: traverse using the next pointer and map copied nodes to original nodes
         while curr:
             copy_curr.next = Node(curr.val)
             node_hash[curr] = copy_curr.next
             copy_curr = copy_curr.next
             curr = curr.next
         
+        # Pass-2: to connect the random nodes
         curr, copy_curr = head, dummyhead.next
         while curr and copy_curr:
-            if curr.random == None:
-                copy_curr.random = None
-            else:
-                copy_curr.random = node_hash[curr.random]
-            
+            copy_curr.random = node_hash[curr.random] if curr.random != None else None            
             curr, copy_curr = curr.next, copy_curr.next
                 
         return dummyhead.next
