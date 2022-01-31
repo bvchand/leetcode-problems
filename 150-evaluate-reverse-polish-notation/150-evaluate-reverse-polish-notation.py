@@ -8,13 +8,11 @@ class Solution:
         
         for el in tokens:
             res = 0
-            # print(stack)
             if el not in symbols:  
                 stack.append(el)
                 continue
             b = int(stack.pop())
             a = int(stack.pop())
-            # print(a, b)
             if el == '+':   res = a+b
             elif el == '-': res = a-b
             elif el == '*': res = a*b
