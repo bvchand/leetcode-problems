@@ -6,7 +6,7 @@ class MyQueue:
     def push(self, x: int) -> None:
         self.stack1.append(x)
 
-    def pop(self) -> int:
+    def pop(self) -> int:       # amortized O(1)
         if len(self.stack2) > 0:
             return self.stack2.pop()
         
