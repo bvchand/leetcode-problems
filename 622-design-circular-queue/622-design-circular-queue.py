@@ -5,19 +5,19 @@ class Node:
         
 class SLL:
     def __init__(self):
-        self.dummyhead = Node(0)
-        self.rear = self.dummyhead
-        # self.rear.next = self.dummyhead
+        self.head = Node(0)
+        self.tail = self.head
+        # self.rear.next = self.head
     
     def insert(self, x):
-        temp = self.rear
-        self.rear.next = Node(x)
-        self.rear = self.rear.next
+        temp = self.tail
+        self.tail.next = Node(x)
+        self.tail = self.tail.next
     
     def remove(self, head):
         removed_node = head.next
         head.next = head.next.next
-        if self.rear == removed_node:   self.rear = self.dummyhead
+        if self.tail == removed_node:   self.tail = self.head
         removed_node = None
 
 class MyCircularQueue:
@@ -36,7 +36,7 @@ class MyCircularQueue:
         
     def deQueue(self) -> bool:
         if self.size > 0:
-            node = self.q.dummyhead
+            node = self.q.head
             self.q.remove(node)
             self.size -= 1
             return True
@@ -44,12 +44,12 @@ class MyCircularQueue:
             
     def Front(self) -> int:
         if self.size > 0 :   
-            return self.q.dummyhead.next.val
+            return self.q.head.next.val
         return -1
 
     def Rear(self) -> int:
         if self.size > 0 :   
-            return self.q.rear.val
+            return self.q.tail.val
         return -1
 
     def isEmpty(self) -> bool:
