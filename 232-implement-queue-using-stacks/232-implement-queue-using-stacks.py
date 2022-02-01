@@ -9,9 +9,7 @@ class MyQueue:
     def pop(self) -> int:
         temp = []
         for i in range(1, len(self.stack)):
-            temp.append(self.stack.pop())
-            print(temp)
-        
+            temp.append(self.stack.pop())        
         popped_val = self.stack.pop()
         self.stack = temp[::-1]
         return popped_val
