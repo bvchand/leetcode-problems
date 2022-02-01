@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, x, next=None, prev=None):
+    def __init__(self, x, next=None):
         self.val = int(x)
         self.next = next
         
@@ -7,7 +7,6 @@ class SLL:
     def __init__(self):
         self.head = Node(0)
         self.tail = self.head
-        # self.rear.next = self.head
     
     def insert(self, x):
         temp = self.tail
