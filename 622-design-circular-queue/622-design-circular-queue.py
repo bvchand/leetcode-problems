@@ -13,13 +13,9 @@ class SLL:
         temp = self.rear
         self.rear.next = Node(x)
         self.rear = self.rear.next
-        self.print()
-        print("pushed ", self.rear.val)
     
     def remove(self, head):
         removed_node = head.next
-        self.print()
-        print("removed ", removed_node.val)
         head.next = head.next.next
         if self.rear == removed_node:   self.rear = self.dummyhead
         removed_node = None
@@ -56,22 +52,18 @@ class MyCircularQueue:
             
     def Front(self) -> int:
         if self.size > 0 :   
-            print("front ", self.q.dummyhead.next.val)
             return self.q.dummyhead.next.val
         return -1
 
     def Rear(self) -> int:
         if self.size > 0 :   
-            print("rear ", self.q.rear.val)
             return self.q.rear.val
         return -1
 
     def isEmpty(self) -> bool:
-        print("is empty ", self.size == 0)
         return self.size == 0
 
     def isFull(self) -> bool:
-        print("is full ", self.size == self.capacity)
         return self.size == self.capacity
 
 
