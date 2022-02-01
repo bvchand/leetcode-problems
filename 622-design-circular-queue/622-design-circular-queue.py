@@ -19,14 +19,6 @@ class SLL:
         head.next = head.next.next
         if self.rear == removed_node:   self.rear = self.dummyhead
         removed_node = None
-    
-    def print(self):
-        curr = self.dummyhead
-        s = ""
-        while curr:
-            s = s + " -> " + str(curr.val)
-            curr = curr.next
-        print("List so far: ", s)
 
 class MyCircularQueue:
 
