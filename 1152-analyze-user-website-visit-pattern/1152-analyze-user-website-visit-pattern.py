@@ -29,5 +29,7 @@ class Solution:
             
         # print(max_score) 
         return sorted(result)[0]
+    
+    # backtracking solution: https://leetcode.com/problems/analyze-user-website-visit-pattern/discuss/1706444/Python-Sorting-%2B-Backtracking-oror-Clean
             
             
