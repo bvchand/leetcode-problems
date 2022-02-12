@@ -12,10 +12,10 @@ class Solution:
                     return False
             
             visited.add((r,c))
-            one = max(dfs(r+1, c),
-                    dfs(r-1, c),
-                    dfs(r, c+1),
-                    dfs(r, c-1))
+            dfs(r+1, c)
+            dfs(r-1, c)
+            dfs(r, c+1)
+            dfs(r, c-1)
             return True
             
         for r in range(ROWS):
