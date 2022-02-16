@@ -33,10 +33,8 @@ class Solution:
             print(queue, step)
             for _ in range(len(queue)):
                 r,c = queue.popleft()
-                print("r, c: ", r, c)
                 for dx,dy in directions:
                     x, y = r+dx, c+dy
-                    print("dx, dy: ", x, y)
                     if x>=0 and x<ROWS and y>=0 and y<COLS:
                         if grid[x][y] == 1:     return step+1
                         elif grid[x][y] == 0 and (x,y) not in visited:   
