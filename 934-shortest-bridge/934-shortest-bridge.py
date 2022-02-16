@@ -30,7 +30,6 @@ class Solution:
         
         # BFS - find the minimum distance
         while queue:
-            print(queue, step)
             for _ in range(len(queue)):
                 r,c = queue.popleft()
                 for dx,dy in directions:
