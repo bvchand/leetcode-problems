@@ -21,10 +21,10 @@ class Solution:
         
         for i, j in product(range(ROWS), range(COLS)):
             if grid[i][j] == 1:
-                flood_fill(i, j) # paint one island to 2, border 0 add to q
+                flood_fill(i, j) 
                 break
         
-        step = -1
+        step = 0
         directions = [(1,0), (0,1), (-1,0), (0,-1)]
         queue = deque(visited)
         
@@ -35,7 +35,7 @@ class Solution:
                 for dx,dy in directions:
                     x, y = r+dx, c+dy
                     if x>=0 and x<ROWS and y>=0 and y<COLS:
-                        if grid[x][y] == 1:     return step+1
+                        if grid[x][y] == 1:     return step
                         elif grid[x][y] == 0 and (x,y) not in visited:   
                             queue.append((x,y))
                             visited.add((x,y))
