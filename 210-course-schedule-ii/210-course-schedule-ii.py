@@ -8,7 +8,6 @@ class Solution:
         dag = defaultdict(GNode)
         
         dag = {key:GNode() for key in range(numCourses)}
-        print(dag)
         
         for relations in prerequisites:
             course, prereq = relations
