@@ -12,7 +12,7 @@ class Solution:
             if char in '+-*/' or i == len(s)-1: 
                 if operator == '+':
                     value.append(curr_num)
-                if operator == '-':
+                elif operator == '-':
                     value.append(-curr_num)
                 elif operator == '*':
                     value[-1] *= curr_num
@@ -20,6 +20,6 @@ class Solution:
                     value[-1] = int(value[-1]/curr_num)
                 curr_num = 0
                 operator = char
-
+                
         return sum(value)
             
