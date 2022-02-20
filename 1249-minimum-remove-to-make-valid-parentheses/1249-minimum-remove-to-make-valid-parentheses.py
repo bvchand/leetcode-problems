@@ -22,6 +22,9 @@ class Solution:
             result += s[i]
             
         return result
+    
+# time:     O(n)
+# space:    O(n)   
                 
             
         
