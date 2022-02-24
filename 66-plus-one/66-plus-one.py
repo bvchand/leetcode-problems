@@ -5,8 +5,8 @@
 []
 
 
-time: O(n)
-space = O(1)
+time: O(N)
+space = O(N) --> worst case O(1) best case
 """
 
 class Solution:
