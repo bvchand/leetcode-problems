@@ -17,7 +17,6 @@ class Solution:
                     adj[words[i][j]].add(words[i+1][j])
                     break
         
-        print(adj)
         visited = {}        # char:True/False;  True: cycle exists 
         res = []
         
