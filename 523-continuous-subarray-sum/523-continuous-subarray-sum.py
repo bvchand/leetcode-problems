@@ -3,7 +3,7 @@ class Solution:
         if k < 0 or len(nums) < 2:
             return False
         tot = 0
-        sum_idx_map = {0:-1}
+        sum_idx_map = {0:-1}    # remainder:index
         for i in range(len(nums)):
             tot += nums[i]
             rem = tot % k
