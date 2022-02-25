@@ -9,8 +9,7 @@
 class Solution:
     def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         col_dict = defaultdict(list)
-        visited = deque()
-        visited.append((root,0))
+        visited = deque([(root,0)])
         min_col, max_col = sys.maxsize, 0
         
         while visited:
