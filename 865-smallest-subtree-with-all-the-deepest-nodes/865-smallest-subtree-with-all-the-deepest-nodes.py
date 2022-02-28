@@ -6,7 +6,6 @@
 #         self.right = right
 class Solution:
     def subtreeWithAllDeepest(self, root: TreeNode) -> TreeNode:
-        depth = {None:-1,}
         
         def dfs(root, parent=None):
             if root:
@@ -22,7 +21,8 @@ class Solution:
             
             return root if (L and R) else (L or R)
         
+        
+        depth = {None:-1,}
         dfs(root)
         max_depth = max(depth.values())
-    
         return get_deepest_subtree(root)
