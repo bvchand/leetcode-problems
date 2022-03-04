@@ -3,45 +3,46 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         
-        TC:
-        [1,4,7,4,9,7,6,5,3]
-        [9]
-        []
-        [1,2,3]
-        [3,2,1]
+        [3,2,1,9,7,6] --> [3,2,1,9,7,6] --> [3,2,6,9,7,1] --> [3,2,1,6,7,9]
+               i               i   
+                                     j
         
-        Pseudocode:
-        traverse from right-to-left until nums[i-1] < nums[i] - while
-        if i == 0:   nums.reverse() return
-        else:   j = i
-        traverse forward from j to find the next big number from nums[i-1]
-        swap nums[i-1] and nums[j]
-        
+        [1,2,4,3,1] --> [1,3,4,2,1]
+    
         """
         
         def swap(i, j):
             temp = nums[i]
             nums[i] = nums[j]
             nums[j] = temp
-            
-        def reverse(i, j):
-            while i < j:
-                swap(i, j)
-                i += 1
-                j -= 1
-            
-        i = len(nums)-1
         
-        while i >= 0 and nums[i-1] >= nums[i]:
+        
+        i = len(nums)-1     # find the first smallest number
+        
+        while i > 0:
+            if nums[i-1] < nums[i]:
+                break
             i -= 1
-        i-=1
+        i = i-1
         if i >= 0:
             j = len(nums)-1
-            while nums[j] <= nums[i]:
+            while j > i:
+                if nums[j] > nums[i]:
+                    swap(j,i)
+                    break
                 j -= 1
+        i, j = i+1, len(nums)-1
+        # print(i, j)
+        # print(nums)
+        while i < j:
             swap(i, j)
-        reverse(i+1, len(nums)-1)
+            i += 1
+            j -= 1
+        # print(nums)
+            
+                
+            
         
-            
-            
-            
+        
+        
+        
