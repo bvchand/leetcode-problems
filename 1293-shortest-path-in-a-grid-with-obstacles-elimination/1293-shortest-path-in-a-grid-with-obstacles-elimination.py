@@ -27,6 +27,7 @@ class Solution:
         ROWS, COLS = len(grid), len(grid[0])
         source, destination = (0,0), (ROWS-1, COLS-1)
         
+        """
         dirs = [(0,1), (0,-1), (1,0), (-1,0)]
         
         neighbors = defaultdict(list)
@@ -38,7 +39,7 @@ class Solution:
                     r, c = x+dx, y+dy
                     if 0 <= r < ROWS and 0 <= c < COLS:
                         neighbors[(x,y)].append((r,c))         
-
+        """
         
         if k >= ROWS + COLS - 2:
             return ROWS + COLS - 2
@@ -52,15 +53,14 @@ class Solution:
             
             if (r,c) == destination:    return steps
             
-            # for nr,nc in [(r,c+1), (r,c-1), (r+1,c), (r-1,c)]:
-                # if 0 <= nr < ROWS and 0 <= nc < COLS:
-            for nr,nc in neighbors[(r,c)]:
-                new_k = k-grid[nr][nc]
-                new_state = (nr, nc, new_k)
+            for nr,nc in [(r,c+1), (r,c-1), (r+1,c), (r-1,c)]:
+                if 0 <= nr < ROWS and 0 <= nc < COLS:
+                    new_k = k-grid[nr][nc]
+                    new_state = (nr, nc, new_k)
 
-                if new_k >= 0 and new_state not in visited:
-                    visited.add(new_state)
-                    q.append((steps+1, new_state))
+                    if new_k >= 0 and new_state not in visited:
+                        visited.add(new_state)
+                        q.append((steps+1, new_state))
         return -1
 
                         
