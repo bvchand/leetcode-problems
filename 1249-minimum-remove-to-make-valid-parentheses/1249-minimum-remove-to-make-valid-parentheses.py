@@ -1,31 +1,41 @@
+"""
+0 1 2 3 4 5 6 7 8 9 10 11 12
+l e e ( t ( c ) o ) d  e  )
+
+
+
+stack = []
+set = (12)
+res = 
+
+"""
+
+
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         stack = []
-        index_to_remove = set()
+        invalid_index = set()
+        res = []
         
         for i in range(len(s)):
-            if s[i] not in '()':    continue
-            if s[i] == '(':
+            if s[i] not in '()':
+                continue
+            elif s[i] == '(':
                 stack.append(i)
-            elif s[i] == ')' and not stack:
-                index_to_remove.add(i)
-            elif s[i] == ')':
+            elif stack and s[i] == ')':
                 stack.pop()
-            
+            elif s[i] == ')':
+                invalid_index.add(i)
         
-        if stack:   index_to_remove = index_to_remove.union(set(stack))
-        print(index_to_remove)
+        if stack:
+            for i in stack:      invalid_index.add(i) 
         
-        result = ""
         for i in range(len(s)):
-            if i in index_to_remove:    continue
-            result += s[i]
-            
-        return result
-    
-# time:     O(n)
-# space:    O(n)   
+            if i not in invalid_index:
+                res.append(s[i])
+        
+        return ''.join(res)
+        
                 
-            
         
         
