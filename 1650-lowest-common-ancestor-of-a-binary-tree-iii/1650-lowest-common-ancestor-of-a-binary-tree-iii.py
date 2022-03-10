@@ -21,6 +21,11 @@ class Solution:
             q = q.parent
         
         return None
+
+"""
+time: O(N)
+space: O(N)
+"""
         
         
                 
