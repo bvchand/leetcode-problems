@@ -20,5 +20,7 @@ class Solution:
             if q in parents:    return q
             q = q.parent
         
+        return None
+        
         
                 
