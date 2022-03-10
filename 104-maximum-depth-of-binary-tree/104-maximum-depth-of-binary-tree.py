@@ -11,10 +11,10 @@ class Solution:
         def helper(root, depth):
             if not root:
                 return 0
-            
+            print(root.val, depth)
             return max(1 + helper(root.left, depth), 1 + helper(root.right, depth))
         
-        return helper(root, 1)
+        return helper(root, 0)
     
 
 """
