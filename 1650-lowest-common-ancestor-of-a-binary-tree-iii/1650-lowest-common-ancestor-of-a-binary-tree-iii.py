@@ -7,7 +7,7 @@ class Node:
         self.right = None
         self.parent = None
 """
-
+"""
 class Solution:
     def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
         parents = set()
@@ -22,10 +22,27 @@ class Solution:
         
         return None
 
-"""
+
 time: O(N)
 space: O(N)
 """
+
+"""
+Similar to intersection of 2 linked lists
+
+time: O(N)
+space: O(1)
+"""
+class Solution:
+    def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
+        a, b = p, q
+        
+        while a != b:
+            a = a.parent if a else q
+            b = b.parent if b else p
+            print(a, b)
+        return a
+        
         
         
                 
