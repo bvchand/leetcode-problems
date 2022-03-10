@@ -9,6 +9,13 @@ class Solution:
                     dp[a] = min(1+dp[a-c], dp[a])
         
         return dp[amount] if dp[amount] != sys.maxsize else -1
+    
+    
+    
+"""
+Time: O(amount * #coins)
+Space: O(amount)
+"""
             
         
         
