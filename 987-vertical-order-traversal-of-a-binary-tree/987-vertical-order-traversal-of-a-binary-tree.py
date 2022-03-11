@@ -4,30 +4,36 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+from collections import deque, OrderedDict
+
 class Solution:
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
-        cols = []
-        visited = deque([(root,0,0)])
-        min_col, max_col = sys.maxsize, 0
+        nodes = []
+        visited = deque()
+        visited.append((root, 0, 0))        # (root,row,col)
         
         while visited:
-            node, row, col = visited.popleft()
+            node, r, c = visited.popleft()
             
             if node:
-                cols.append((col, row, node.val))
-                # if col < min_col:   min_col = col
-                # elif col > max_col: max_col = col
-                visited.append((node.left, row+1, col-1))
-                visited.append((node.right, row+1, col+1))
+                nodes.append([c, r, node.val])
+                visited.append((node.left, r+1, c-1))
+                visited.append((node.right, r+1, c+1))
+            
+        nodes.sort()        # sorts first by col, row, root.val
         
-        cols.sort()
-        ret = OrderedDict()
-        for column, row, value in cols:
-            if column in ret:
-                ret[column].append(value)
+        colMap = OrderedDict()
+        
+        for c, r, val in nodes:
+            if c in colMap:
+                colMap[c].append(val)
             else:
-                ret[column] = [value]
-
-        return ret.values()
+                colMap[c] = [val]
+        
+        return [vals for vals in colMap.values()]
+        
+        
+        
         
         
