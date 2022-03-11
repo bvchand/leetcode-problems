@@ -5,37 +5,34 @@
 #         self.left = left
 #         self.right = right
 
-from collections import deque, OrderedDict
+from collections import deque, defaultdict
 
 class Solution:
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
-        nodes = []
+        colDict = defaultdict(list)
         visited = deque()
         visited.append((root, 0, 0))        # (root,row,col)
+        
+        min_col, max_col = 0, 0
         
         while visited:
             node, r, c = visited.popleft()
             
             if node:
-                nodes.append([c, r, node.val])
+                colDict[c].append((r, node.val))
+                if c < min_col:     min_col = c
+                elif c > max_col:   max_col = c
                 visited.append((node.left, r+1, c-1))
                 visited.append((node.right, r+1, c+1))
+        
+        res =[]
+        for col in range(min_col, max_col+1):
+            res.append([val for r, val in sorted(colDict[col])])
             
-        nodes.sort()        # sorts first by col, row, root.val
-        
-        colMap = OrderedDict()
-        
-        for c, r, val in nodes:
-            if c in colMap:
-                colMap[c].append(val)
-            else:
-                colMap[c] = [val]
-        
-        return [vals for vals in colMap.values()]
-
+        return res
 """
 BFS
-time: O(N.log(N))
+time: O(N.log(N/K)) --> K is the length of nodes in each col
 space: O(N)
 """
         
