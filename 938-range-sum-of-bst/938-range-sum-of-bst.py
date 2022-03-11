@@ -6,17 +6,17 @@
 #         self.right = right
 class Solution:
     def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
-        self.sum_ = 0
+        
+             
         def helper(root):
             if root:
-                if root.val < low:
-                    helper(root.right)
-                elif root.val >= low and root.val <= high:
-                    self.sum_ += root.val
+                if root.val >= low and root.val <= high:
+                    self.ans += root.val
+                if root.val > low:
                     helper(root.left)
+                if root.val < high:
                     helper(root.right)
-                elif root.val > high:
-                    helper(root.left)
-                
+        self.ans = 0
         helper(root)
-        return self.sum_
+        return self.ans
+        
