@@ -17,11 +17,11 @@ class Solution:
                 dfs(root.left)
                 
                 if not self.tail:    # yet to find the head
-                    self.head = self.tail = root
+                    self.head = root
                 else:
                     self.tail.right = root
                     root.left = self.tail
-                    self.tail = root
+                self.tail = root
                 
                 dfs(root.right)
             return
