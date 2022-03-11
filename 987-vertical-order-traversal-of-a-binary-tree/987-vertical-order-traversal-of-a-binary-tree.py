@@ -32,6 +32,12 @@ class Solution:
                 colMap[c] = [val]
         
         return [vals for vals in colMap.values()]
+
+"""
+BFS
+time: O(N.log(N))
+space: O(N)
+"""
         
         
         
