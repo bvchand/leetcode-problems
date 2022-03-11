@@ -34,5 +34,11 @@ class Solution:
         self.head.left = self.tail
         
         return self.head
+
+"""
+DFS - inorder
+time: O(N)
+space: O(N) - recursion stack size of tree height
+"""
         
         
