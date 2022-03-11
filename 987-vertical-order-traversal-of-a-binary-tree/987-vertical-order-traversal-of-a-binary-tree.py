@@ -31,7 +31,7 @@ class Solution:
             
         return res
 """
-BFS - local sorting
+BFS - partition sorting
 time: O(N.log(N/K)) --> K is the length of nodes in each col
 space: O(N)
 """
