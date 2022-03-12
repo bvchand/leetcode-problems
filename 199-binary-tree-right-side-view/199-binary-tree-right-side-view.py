@@ -28,7 +28,8 @@ class Solution:
         return res
     
 """
+BFS - level order traversal
 time: O(N)
-space: O(N)
+space: O(D)  --> D: Diameter of the binary tree
 """
         
