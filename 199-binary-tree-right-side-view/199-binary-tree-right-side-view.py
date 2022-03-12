@@ -18,7 +18,7 @@ class Solution:
         
         while q:
             qLen = len(q)
-            res.append(q[-1].val)
+            res.append(q[-1].val)       # rightmost value
             for i in range(qLen):
                 node = q.popleft()
                 if node.left:   q.append(node.left)
