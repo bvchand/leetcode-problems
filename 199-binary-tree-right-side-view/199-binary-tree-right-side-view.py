@@ -10,20 +10,25 @@ from collections import deque
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:        
         res = []
+        
+        if not root:    return res
+        
         q = deque()
         q.append(root)
         
         while q:
             qLen = len(q)
-            level = []
+            res.append(q[-1].val)
             for i in range(qLen):
                 node = q.popleft()
-                if node:
-                    level.append(node.val)
-                    q.append(node.left)
-                    q.append(node.right)
-            if level:   res.append(level)
+                if node.left:   q.append(node.left)
+                if node.right:  q.append(node.right)
         
         print(res)
-        return [level[-1] for level in res]
+        return res
+    
+"""
+time: O(N)
+space: O(N)
+"""
         
