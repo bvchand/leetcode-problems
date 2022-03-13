@@ -1,19 +1,16 @@
 class Solution:
     def minAddToMakeValid(self, s: str) -> int:
-        invalid_index = set()
-        stack = []
+        min_add = open_ = close = 0
         
-        for i,c in enumerate(s):
-            if c not in '()':
-                continue
-            elif c == '(':
-                stack.append(i)
-            elif stack and c == ')':
-                stack.pop()
-            elif c == ')':
-                invalid_index.add(i)
+        for i in range(len(s)):
+            if s[i] == '(':
+                open_ += 1
+            else:
+                if open_ == close:
+                    min_add += 1
+                else:
+                    close += 1
         
-        if stack:  
-            for i in stack:     invalid_index.add(i)
-        
-        return len(invalid_index)
+        return min_add + open_ - close
+            
+                
