@@ -12,5 +12,9 @@ class Solution:
                     close += 1
         
         return min_add + open_ - close
-            
+
+"""
+time: O(n)
+space: O(1)
+"""
                 
