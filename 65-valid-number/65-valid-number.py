@@ -1,9 +1,9 @@
 class Solution:
     def isNumber(self, s: str) -> bool:
-        seen_digit, seen_exp, seen_dot = 0, 0, 0
+        seen_digit = seen_exp = seen_dot = False
+        
         signs = ('+', '-')
         
-    
         for i in range(len(s)):
             if s[i].isnumeric():
                 seen_digit = True
