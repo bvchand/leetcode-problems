@@ -18,6 +18,11 @@ class Solution:
         if carry:   res.append(str(carry))
         
         return "".join(res[::-1])
+    
+"""
+time: O(N)
+space = O(N)
+"""
             
             
             
