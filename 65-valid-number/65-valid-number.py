@@ -27,3 +27,8 @@ class Solution:
                 return False
             
         return seen_digit
+
+"""
+time: O(N)
+space: O(1)
+"""
