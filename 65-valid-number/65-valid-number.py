@@ -12,7 +12,7 @@ class Solution:
                 if i > 0 and s[i-1] not in ('e', 'E'):
                     return False
             
-            elif i > 0 and s[i] in ('e', 'E'):
+            elif s[i] in ('e', 'E'):
                 if seen_exp or not seen_digit:
                     return False
                 seen_exp = True
