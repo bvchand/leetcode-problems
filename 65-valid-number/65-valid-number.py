@@ -5,7 +5,7 @@ class Solution:
         
     
         for i in range(len(s)):
-            if s[i].isdigit():
+            if s[i].isnumeric():
                 seen_digit = True
             
             elif s[i] in signs:
