@@ -29,3 +29,8 @@ class Solution:
         
         return reversed(res)
         
+        """
+        time = O(N)
+        space = O(1)
+        """
+        
