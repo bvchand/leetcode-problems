@@ -1,5 +1,6 @@
 class Solution:
     def findBuildings(self, heights: List[int]) -> List[int]:
+        """
         stack = []
         
         for i, building in enumerate(heights):
@@ -12,9 +13,19 @@ class Solution:
         
         return stack
 
-"""
-time: O(N)
-space: O(N)
-"""
-                
+        """
+        time: O(N)
+        space: O(N)
+        """
+        """   
+        res = []
+        maxheight = -1
+        n = len(heights)-1
+        
+        for i in range(n, -1, -1):
+            if heights[i] > maxheight:
+                res.append(i)
+                maxheight = heights[i]
+        
+        return reversed(res)
         
