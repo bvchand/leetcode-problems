@@ -3,14 +3,14 @@ class Solution:
         stack = []
         
         for i, building in enumerate(heights):
-            if not stack or stack[-1][0] > building:
-                stack.append((building, i))
+            if not stack or heights[stack[-1]] > building:
+                stack.append(i)
             else:
-                while stack and stack[-1][0] <= building:
+                while stack and heights[stack[-1]] <= building:
                     stack.pop()
-                stack.append((building, i))
+                stack.append(i)
         
-        return [i for h, i in stack]
+        return stack
 
 """
 time: O(N)
