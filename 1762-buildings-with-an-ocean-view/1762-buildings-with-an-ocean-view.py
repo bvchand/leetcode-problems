@@ -18,6 +18,7 @@ class Solution:
         space: O(N)
         """
         """   
+        
         res = []
         maxheight = -1
         n = len(heights)-1
