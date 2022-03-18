@@ -18,3 +18,8 @@ class Solution:
             right -= 1
         
         return True
+    
+"""
+time: O(N)
+space: O(1)
+"""
