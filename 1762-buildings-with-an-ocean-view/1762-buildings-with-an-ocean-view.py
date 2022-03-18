@@ -11,5 +11,10 @@ class Solution:
                 stack.append((building, i))
         
         return [i for h, i in stack]
+
+"""
+time: O(N)
+space: O(N)
+"""
                 
         
