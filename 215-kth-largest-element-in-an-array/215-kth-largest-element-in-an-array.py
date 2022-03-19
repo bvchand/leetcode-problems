@@ -17,6 +17,13 @@ class Solution:
             else:       return nums[p]
             
         return quickSelect(0, len(nums)-1)
+    
+"""
+time: 
+    avg case: O(N) 
+    worse case: O(N^2)
+space: O(1)
+"""
                 
                 
                 
