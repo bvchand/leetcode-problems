@@ -2,20 +2,16 @@ class Solution:
     def myPow(self, x: float, n: int) -> float:
         if n < 0:
             x, n = 1/x, -n
-            
-        if n == 0:  return 1
         
         def helper(x, n):
-            if n == 1:
-                return x
+            if x == 0:  return 0
+            if n == 0:  return 1
             
-            if n % 2 == 0:
-                val = helper(x, n/2)
-                return val * val
-            else:
-                val = helper(x, n//2)
-                return x * val * val
-        
+            res = helper(x, n//2)
+            res = res * res
+            
+            return x * res if n%2 != 0 else res
+            
         return helper(x, n)
             
             
