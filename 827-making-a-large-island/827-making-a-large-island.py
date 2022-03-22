@@ -11,8 +11,7 @@ class Solution:
         
         
         def getIslandSize(grid, r, c, islandID):
-            if r < 0 or r >= ROWS or \
-               c < 0 or c >= COLS or \
+            if r < 0 or r >= ROWS or c < 0 or c >= COLS or \
                grid[r][c] != 1:
                 return 0
             grid[r][c] = islandID
