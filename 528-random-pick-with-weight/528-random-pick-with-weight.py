@@ -4,15 +4,16 @@ class Solution:
 
         self.prefix_sums = []
         prefix_sum = 0
-        for weight in w:
+        for weight in w:            # add the cum sum in the list for each index
             prefix_sum += weight
             self.prefix_sums.append(prefix_sum)
         self.total_sum = prefix_sum
 
     def pickIndex(self) -> int:
-        target = self.total_sum * random.random()
-        # run a binary search to find the target zone
-        left, right = 0, len(self.prefix_sums)
+        target = self.total_sum * random.random()       # generate a rand index based on the total sum
+        
+        # run a binary search to find the target bucket
+        left, right = 0, len(self.prefix_sums)      
         while left < right:
             mid = left + (right - left) // 2
             if target > self.prefix_sums[mid]:
