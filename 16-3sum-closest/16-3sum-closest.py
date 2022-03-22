@@ -25,6 +25,11 @@ class Solution:
                 break
             
         return target-minDist
+
+"""
+time: O(N^2)
+space: O(log N) to O(N) depending on sort implementation
+"""
                 
                 
                     
