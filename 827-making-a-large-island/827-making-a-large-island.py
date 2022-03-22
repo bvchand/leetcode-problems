@@ -33,6 +33,7 @@ class Solution:
                     maxSize = max(size, maxSize)
                     islandID += 1
         
+        
         # find the largest island
         for r in range(ROWS):
             for c in range(COLS):
