@@ -52,3 +52,9 @@ class Solution:
                     right = mid - 1
                 
         return -1
+
+"""
+time: O(log N)
+space: O(1)
+
+"""
