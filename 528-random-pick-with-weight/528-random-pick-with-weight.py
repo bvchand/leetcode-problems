@@ -12,14 +12,14 @@ class Solution:
     def pickIndex(self) -> int:
         target = self.total_sum * random.random()
         # run a binary search to find the target zone
-        low, high = 0, len(self.prefix_sums)
-        while low < high:
-            mid = low + (high - low) // 2
+        left, right = 0, len(self.prefix_sums)
+        while left < right:
+            mid = left + (right - left) // 2
             if target > self.prefix_sums[mid]:
-                low = mid + 1
+                left = mid + 1
             else:
-                high = mid
-        return low
+                right = mid
+        return left
         
 """
 time:   O(N) - init
