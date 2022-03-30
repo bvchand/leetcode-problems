@@ -1,6 +1,5 @@
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
-        result = 0
         intervals.sort()
         free_rooms = []        # add the end times of the meetings in a min-heap
         heapq.heappush(free_rooms, intervals[0][1])
