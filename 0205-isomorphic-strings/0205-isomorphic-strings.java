@@ -16,7 +16,6 @@ class Solution {
                 t2s[c2] = c1;
             }
                 
-                
             if (!(s2t[c1] == c2 && t2s[c2] == c1)){
                 return false;
             }
