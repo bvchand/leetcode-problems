@@ -2,10 +2,10 @@ class Solution {
     public boolean isSubsequence(String s, String t) {
         int p1 = 0 , p2 = 0;
         
-        if (s.length() == 0)
-            return true;
-        if (s.length() > t.length())
-            return false;
+        // if (s.length() == 0)
+        //     return true;
+        // if (s.length() > t.length())
+        //     return false;
         
         while (p1 < s.length() && 
                p2 < t.length()) {
