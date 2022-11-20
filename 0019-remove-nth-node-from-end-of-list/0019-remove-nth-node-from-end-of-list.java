@@ -20,11 +20,7 @@ class Solution {
             size++;
             curr = curr.next;
         }
-        
-        if (size == 1) {
-            return null;
-        }
-        
+
         int indexToBeRemoved = size - n; // index to be removed (0 indexed)
         curr = dummy;
         
