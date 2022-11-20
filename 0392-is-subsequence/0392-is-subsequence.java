@@ -22,5 +22,5 @@ class Solution {
 
 /**
 space: O(1)
-time: O(n)
+time: O(n); n --> length of t
 **/
