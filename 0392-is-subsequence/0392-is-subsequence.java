@@ -15,15 +15,10 @@ class Solution {
             if (c1 == c2) {
                 charFound++;
                 p1++;
-                p2++;
-            } else {
-                p2++;
             }
+            p2++;
         }
-        if (charFound == s.length()) {
-            return true;
-        }
-        return false;
+        return charFound == s.length();
     }
 }
 
