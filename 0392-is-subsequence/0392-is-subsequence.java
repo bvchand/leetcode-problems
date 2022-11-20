@@ -2,6 +2,7 @@ class Solution {
     public boolean isSubsequence(String s, String t) {
         int p1 = 0 , p2 = 0;
         int charFound = 0;
+        
         if (s.length() == 0)
             return true;
         if (s.length() > t.length())
@@ -25,3 +26,8 @@ class Solution {
         return false;
     }
 }
+
+/**
+space: O(1)
+time: O(n)
+**/
