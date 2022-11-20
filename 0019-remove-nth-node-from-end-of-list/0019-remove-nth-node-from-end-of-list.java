@@ -44,3 +44,8 @@ class Solution {
         return dummy.next;
     }
 }
+
+/**
+space = O(1)
+time = O(2n) ; n--> size of linkedlist
+*/
