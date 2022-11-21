@@ -26,10 +26,9 @@ class Solution {
                 }
                 stack.push(c);
                 visited.add(c);
-                freq[c - 'a']--;
-            } else {
-                freq[c - 'a']--;
-            }
+                
+            } 
+            freq[c - 'a']--;
         }
             
         StringBuilder sb = new StringBuilder(stack.size());
