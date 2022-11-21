@@ -3,7 +3,7 @@ class Solution {
         // minHeap for end times
         PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>((x, y) -> (x-y));
         
-        // sort the intervals based on the start date
+        // sort the intervals based on the start date --> O(NlogN)
         Arrays.sort(intervals, new Comparator<int[]>() {
             public int compare(int[] a, int[] b)  {
                 return a[0] - b[0];
@@ -18,8 +18,17 @@ class Solution {
                 minHeap.poll();
             }
             
+            // add the current end time to the heap (regardless of room already available or new room needed)
             minHeap.offer(intervals[i][1]);
         }
         return minHeap.size();
     }
 }
+
+/**
+sort --> O(NlogN)
+heapify (extract the minimum) --> O(logN)
+=> overall time = O(NlogN)
+
+space = O(N) --> heap
+*/
