@@ -15,8 +15,11 @@ class Solution {
             mid = lo + (hi-lo)/2;
             long leftSum, rightSum;
             long m = mid-1;
-            long sum = mid;
+            long sum = 0;
             
+            // Calculate the left sum
+            // If number of left spaces < mid-1 value, we need to calculate the partial sum (so subtract the sum upto m-leftspaces from the total sum)
+            // If number of left spaces > mid-1 value, need to add extra 1's
             if (leftSpaces <= m) {
                 leftSum = m*(m+1)/2 - ((m-leftSpaces)*(m-leftSpaces+1)/2);
             } else {
@@ -29,7 +32,8 @@ class Solution {
                 rightSum = m*(m+1)/2 + 1*(rightSpaces-m);
             }
             
-            sum += leftSum + rightSum;
+            // since mid is not used to calculate left and right sum
+            sum = mid + leftSum + rightSum;
             
             if (sum <= maxSum) {
                 res = mid;
