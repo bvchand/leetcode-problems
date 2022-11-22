@@ -1,3 +1,13 @@
+/*
+DFS
+- first find the pattern of an island
+- create a string of the pattern
+- add the string to a hashset to keep track of the number of islands
+
+space = O(number of distinct islands)
+time = O(ROWSxCOLS)
+*/
+
 class Solution {
     final int WATER = 0, LAND = 1;
     int baseRow, baseCol;
