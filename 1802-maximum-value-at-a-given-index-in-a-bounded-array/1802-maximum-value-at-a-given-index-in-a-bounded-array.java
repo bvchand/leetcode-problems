@@ -38,6 +38,6 @@ class Solution {
                 hi = mid-1;
             }
         } 
-        return (int)res;
+        return (int) res;
     }
 }
