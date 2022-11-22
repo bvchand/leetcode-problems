@@ -5,8 +5,8 @@ class Solution {
         
         System.out.println(Arrays.toString(array));
         
-        for (int i = 0; i < array.length; i++) {
-            String str = array[i].trim();
+        for (String str: array) {
+            // String str = array[i].trim();
             if (str.equals(".") || str.isEmpty()) {
                 continue;
             } else if (str.equals("..")) {
@@ -24,6 +24,5 @@ class Solution {
         for (String str: stack)
             sb.append("/" + str);
         return sb.toString();
-        
     }
 }
