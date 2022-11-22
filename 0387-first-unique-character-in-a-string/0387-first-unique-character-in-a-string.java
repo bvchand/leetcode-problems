@@ -16,3 +16,8 @@ class Solution {
         return -1;
     }
 }
+
+/**
+space: O(1)
+time: O(N)
+*/
