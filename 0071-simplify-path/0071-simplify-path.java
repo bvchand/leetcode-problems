@@ -24,3 +24,13 @@ class Solution {
         return sb.toString();
     }
 }
+
+/*
+Strategy: use stack
+- noop for "."
+- pop() for ".."
+- everything else is a directory name --> "...", "xyz"
+
+time: O(N) --> length of the path
+space: O(2N) --> array and stack
+*/
