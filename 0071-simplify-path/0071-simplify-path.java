@@ -2,9 +2,7 @@ class Solution {
     public String simplifyPath(String path) {
         Stack<String> stack = new Stack<>();
         String[] array = path.split("/");
-        
-        System.out.println(Arrays.toString(array));
-        
+                
         for (String str: array) {
             // String str = array[i].trim();
             if (str.equals(".") || str.isEmpty()) {
