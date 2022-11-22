@@ -6,36 +6,36 @@ array[26] --> visited array (T/F)
 */
 class Solution {
     public String removeDuplicateLetters(String s) {
-        int[] freq = new int[26];
-        Set<Character> visited = new HashSet<Character>();
         Stack<Character> stack = new Stack<Character>();
+        HashSet<Character> visited = new HashSet<>();
         
+        int[] freq = new int[26];
         Arrays.fill(freq, 0);
         
-        for (int i=0; i<s.length(); i++) {
-            freq[s.charAt(i) - 'a']++;
-        }
+        for (int i=0; i<s.length(); i++)
+            freq[s.charAt(i)-'a']++;
         
         for (int i=0; i<s.length(); i++) {
             char c = s.charAt(i);
             
+            // haven't visited the curr char so far
             if (!visited.contains(c)) {
-               while (!stack.isEmpty() && stack.peek() > c && freq[stack.peek()-'a'] > 0) {
+                while (!stack.isEmpty() && stack.peek() > c && freq[stack.peek() - 'a'] > 0) {
                     char top = stack.pop();
                     visited.remove(top);
                 }
                 stack.push(c);
                 visited.add(c);
-                
-            } 
-            freq[c - 'a']--;
+                freq[c-'a']--;
+            } else {
+                freq[c-'a']--;
+            }
         }
-            
-        StringBuilder sb = new StringBuilder(stack.size());
         
-        for (Character c : stack) 
+        StringBuilder sb = new StringBuilder();
+        for (Character c:stack)
             sb.append(c.charValue());
         
-        return sb.toString();
+        return sb.toString();   
     }
 }
