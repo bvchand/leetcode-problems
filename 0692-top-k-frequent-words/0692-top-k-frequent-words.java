@@ -9,15 +9,19 @@ class Solution {
         (w1, w2) -> wordCount.get(w1).equals(wordCount.get(w2)) ? w2.compareTo(w1) : wordCount.get(w1) - wordCount.get(w2));
         
         Set<String> uniqueWords = wordCount.keySet();
+        System.out.println(wordCount.toString());
         
         for (String word: uniqueWords) {
             queue.offer(word);
             if (queue.size() > k)
                 queue.poll();
+            System.out.println(queue.toString());
         }
         
+        System.out.println("**" + queue.toString());
+        
         List<String> res = new ArrayList<>();
-        System.out.println(queue.toString());
+        // System.out.println(queue.toString());
         while(!queue.isEmpty())
             res.add(queue.poll());
         Collections.reverse(res);
