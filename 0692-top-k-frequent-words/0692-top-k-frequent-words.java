@@ -28,3 +28,8 @@ class Solution {
         return res;
     }
 }
+
+/*
+ref for comparator: https://stackoverflow.com/questions/52510140/can-someone-explain-priorityqueue-in-this-example-to-me
+
+*/
