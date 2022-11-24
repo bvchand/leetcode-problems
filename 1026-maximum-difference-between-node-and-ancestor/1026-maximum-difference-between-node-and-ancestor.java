@@ -21,7 +21,7 @@ Time = O(N)
 
 */
 class Solution {
-    public int result;
+    public int result = 0;
     
     public void helper (TreeNode root, int currMin, int currMax) {
         int possibleResult = Math.max(Math.abs(currMin-root.val), Math.abs(currMax-root.val));
