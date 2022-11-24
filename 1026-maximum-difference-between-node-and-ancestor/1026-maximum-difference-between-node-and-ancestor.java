@@ -21,9 +21,9 @@ Time = O(N)
 
 */
 class Solution {
-    public int result = 0;
+    public int result;
     
-    public int helper (TreeNode root, int currMin, int currMax) {
+    public void helper (TreeNode root, int currMin, int currMax) {
         int possibleResult = Math.max(Math.abs(currMin-root.val), Math.abs(currMax-root.val));
         result = Math.max(possibleResult, result);
         
@@ -35,12 +35,13 @@ class Solution {
         if(root.right != null)
             helper(root.right, currMin, currMax);
         
-        return result;
+        return;
     }
     
     public int maxAncestorDiff(TreeNode root) {
         if (root == null)
             return 0;
-        return helper(root, root.val, root.val);
+        helper(root, root.val, root.val);
+        return result;
     }
 }
