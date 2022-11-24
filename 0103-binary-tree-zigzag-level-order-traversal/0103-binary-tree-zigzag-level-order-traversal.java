@@ -13,6 +13,12 @@
  *     }
  * }
  */
+
+/*
+BFS -> level order traversal
+space: O(N)
+time: O(N)
+*/
 class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> res = new LinkedList<>();
@@ -27,7 +33,7 @@ class Solution {
         
         while (!queue.isEmpty()) {
             int nodesPerLevel = queue.size();
-            LinkedList<Integer> nextNodes = new LinkedList<>();
+            LinkedList<Integer> nodesList = new LinkedList<>();
             
             for (int i = 0; i < nodesPerLevel; i++) {
                 Pair<TreeNode, Integer> curr = queue.poll(); //first element
@@ -43,13 +49,12 @@ class Solution {
                 }
                 
                 if (currLevel % 2 == 0)     // currLevel = even (left to right; so add normally)
-                    nextNodes.add(currNode.val);  
+                    nodesList.add(currNode.val);  
                 else                        // currLevel = odd (right to left; so append as a the first element)
-                    nextNodes.addFirst(currNode.val);
+                    nodesList.addFirst(currNode.val);
             }
-            res.add(nextNodes);
+            res.add(nodesList);
         }
-
         return res;
     }
 }
