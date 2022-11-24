@@ -14,42 +14,81 @@
  * }
  */
 
+
 /*
-Approach = DFS
+Approach = BFS
+space = O(N)
+time = O(N)
 */
 
 class Solution {
     public int minDepth(TreeNode root) {
-        Stack<Pair<TreeNode, Integer>> stack = new Stack<>();
+        LinkedList<Pair<TreeNode, Integer>> queue = new LinkedList<>();
         
         if (root == null)
             return 0;
-
-        stack.add(new Pair(root, 1));
         
-        int min_depth = Integer.MAX_VALUE;
+        int currDepth = 0;
+        queue.add(new Pair(root, 1));
         
-        while (!stack.isEmpty()) {
-            Pair<TreeNode, Integer> curr = stack.pop();
-            
+        while (!queue.isEmpty()) {
+            Pair<TreeNode, Integer> curr = queue.poll();    // first element
             TreeNode currNode = curr.getKey();
-            int currDepth = curr.getValue();
+            currDepth = curr.getValue();
             
             if (currNode.left == null && currNode.right == null)
-                min_depth = Math.min(min_depth, currDepth);
-            
-            if (currNode.right != null)
-                stack.push(new Pair(currNode.right, currDepth+1));
+                break;
             
             if (currNode.left != null)
-                stack.push(new Pair(currNode.left, currDepth+1));
+                queue.add(new Pair(currNode.left, currDepth+1));
+            if (currNode.right != null)
+                queue.add(new Pair(currNode.right, currDepth+1));
         }
-        
-        return min_depth;
+        return currDepth;
     }
 } 
 
 
+// -------------------------------------------------------------------------------------------------------------------
+
+// /*
+// Approach = DFS
+// space = O(N)
+// time = O(N)
+// */
+
+// class Solution {
+//     public int minDepth(TreeNode root) {
+//         Stack<Pair<TreeNode, Integer>> stack = new Stack<>();
+        
+//         if (root == null)
+//             return 0;
+
+//         stack.add(new Pair(root, 1));
+        
+//         int min_depth = Integer.MAX_VALUE;
+        
+//         while (!stack.isEmpty()) {
+//             Pair<TreeNode, Integer> curr = stack.pop();
+            
+//             TreeNode currNode = curr.getKey();
+//             int currDepth = curr.getValue();
+            
+//             if (currNode.left == null && currNode.right == null)
+//                 min_depth = Math.min(min_depth, currDepth);
+            
+//             if (currNode.right != null)
+//                 stack.push(new Pair(currNode.right, currDepth+1));
+            
+//             if (currNode.left != null)
+//                 stack.push(new Pair(currNode.left, currDepth+1));
+//         }
+        
+//         return min_depth;
+//     }
+// } 
+
+// -------------------------------------------------------------------------------------------------------------------
 
 // /*
 // Approach: Recursive
