@@ -17,7 +17,7 @@
 /*
 DFS - recursive
 time: O(N)
-space: O(1)
+space: O(N) - worst case --> implicit call stack during DFS (depends on height of the tree); balaced tree --> O(log N)
 */
 
 class Solution {
