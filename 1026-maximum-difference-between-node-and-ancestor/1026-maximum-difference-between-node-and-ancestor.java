@@ -13,8 +13,15 @@
  *     }
  * }
  */
+
+/*
+Recursive
+Space = O(1)
+Time = O(N)
+
+*/
 class Solution {
-    int result = 0;
+    public int result = 0;
     
     public int helper (TreeNode root, int currMin, int currMax) {
         int possibleResult = Math.max(Math.abs(currMin-root.val), Math.abs(currMax-root.val));
