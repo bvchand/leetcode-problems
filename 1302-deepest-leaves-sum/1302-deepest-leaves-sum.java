@@ -45,12 +45,10 @@ class Solution {
             
             if (currNode.left != null) {
                 queue.add(new Pair(currNode.left, currLevel+1));
-                // deepestLevel = Math.max(currLevel+1, deepestLevel);
             }
             
             if (currNode.right != null) {
                 queue.add(new Pair(currNode.right, currLevel+1));
-                // deepestLevel = Math.max(currLevel+1, deepestLevel);
             }
             
         }
