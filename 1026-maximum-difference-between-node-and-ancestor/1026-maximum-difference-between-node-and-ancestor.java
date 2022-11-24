@@ -41,7 +41,6 @@ class Solution {
     public int maxAncestorDiff(TreeNode root) {
         if (root == null)
             return 0;
-        
         return helper(root, root.val, root.val);
     }
 }
