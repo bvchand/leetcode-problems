@@ -30,6 +30,7 @@ class Solution {
             TreeNode parent = stack.peek();
             TreeNode child = new TreeNode(preorder[i]);
             
+            // adjust the parent node if parent.val (stack top) < child.val
             while (!stack.isEmpty() && child.val > stack.peek().val) {
                 parent = stack.pop();
             }
