@@ -10,7 +10,7 @@ class Solution {
         this.destination = destination;
         
         boolean[] visited = new boolean[n];
-        Arrays.fill(visited, false);
+        // Arrays.fill(visited, false);
         
         for (int[] edge : edges) {
             int x = edge[0], y = edge[1];
