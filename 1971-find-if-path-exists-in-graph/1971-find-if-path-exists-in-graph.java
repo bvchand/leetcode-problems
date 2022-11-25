@@ -1,5 +1,7 @@
 /*
 DFS - recursive
+time = O(m+n) ; m: nodes/vertices, n:edges; O(m) for building the map; O(n) for finding the dest
+space = O(m+n) ; O(m) for map, O(n) recursive stack call for each node
 */
 class Solution {
     private Map<Integer, List<Integer>> graph = new HashMap<>();
@@ -10,7 +12,7 @@ class Solution {
         this.destination = destination;
         
         boolean[] visited = new boolean[n];
-        // Arrays.fill(visited, false);
+        Arrays.fill(visited, false);
         
         for (int[] edge : edges) {
             int x = edge[0], y = edge[1];
