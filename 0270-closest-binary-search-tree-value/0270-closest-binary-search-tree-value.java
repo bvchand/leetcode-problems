@@ -13,6 +13,12 @@
  *     }
  * }
  */
+
+/*
+Iterative
+space = O(1)
+time = O(H)
+*/
 class Solution {
     public int closestValue(TreeNode root, double target) {
         TreeNode curr = root;
@@ -26,10 +32,7 @@ class Solution {
                 minNode = curr;
             }
             
-            if (target < curr.val)
-                curr = curr.left;
-            else
-                curr = curr.right;
+            curr = target < curr.val ? curr.left : curr.right;
         }
         return minNode.val;
     }
