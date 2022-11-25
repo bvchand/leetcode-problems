@@ -24,7 +24,6 @@ class Solution {
         
         while (!stack.isEmpty()) {
             int currNode = stack.pop();
-            
             if (currNode == destination)
                 return true;
             
