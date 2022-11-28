@@ -1,3 +1,8 @@
+/*
+DFS
+Time: O(V+E)
+Space: O(V+E)
+*/
 class Solution {
     public int reachableNodes(int n, int[][] edges, int[] restricted) {
         Stack<Integer> stack = new Stack<>();
@@ -16,10 +21,10 @@ class Solution {
         }
         
         stack.push(0);
+        visited.add(0);
         
         while (!stack.isEmpty()) {
             int currNode = stack.pop();
-            visited.add(currNode);
             
             for (int neighbor: adjList.get(currNode)) {
                 if (!visited.contains(neighbor)) {
@@ -35,3 +40,4 @@ class Solution {
         
     }
 }
+
