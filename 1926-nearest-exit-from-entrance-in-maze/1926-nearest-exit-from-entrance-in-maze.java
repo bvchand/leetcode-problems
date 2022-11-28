@@ -20,7 +20,9 @@ class Solution {
                     
             for (int[] dir: directions) {
                 int nextRow = dir[0] + currRow, nextCol = dir[1] + currCol;
-                if (nextRow >= 0 && nextRow < rows && nextCol >= 0 && nextCol < cols && maze[nextRow][nextCol] == EMPTY) {
+                if (nextRow >= 0 && nextRow < rows && nextCol >= 0 && nextCol < cols && 
+                    maze[nextRow][nextCol] == EMPTY) {
+                    
                     if (nextRow == 0 || nextRow == rows-1 || nextCol == 0 || nextCol == cols-1)
                         return currDist + 1;
                     queue.offer(new int[]{nextRow, nextCol, currDist + 1});
