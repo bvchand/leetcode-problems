@@ -1,3 +1,8 @@
+/*
+BFS
+time: O(N)
+space: O(N)
+*/
 class Solution {
     public boolean canReach(int[] arr, int start) {
         boolean[] visited = new boolean[arr.length];
