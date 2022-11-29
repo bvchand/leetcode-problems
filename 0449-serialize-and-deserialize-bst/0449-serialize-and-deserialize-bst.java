@@ -34,7 +34,7 @@ public class Codec {
     }
     
     private int index = 0;
-    public TreeNode deserializeHelper(String[] preorder, int lower, int upper) {
+    public TreeNode constructTree(String[] preorder, int lower, int upper) {
         if (index == preorder.length)
             return null;
         
@@ -45,8 +45,8 @@ public class Codec {
         
         index++;
         TreeNode root = new TreeNode(value);
-        root.left = deserializeHelper(preorder, lower, value);
-        root.right = deserializeHelper(preorder, value, upper);
+        root.left = constructTree(preorder, lower, value);
+        root.right = constructTree(preorder, value, upper);
         
         return root;
     }
@@ -56,7 +56,7 @@ public class Codec {
         if (data.length() <= 0)
             return null;
         String[] preorder = data.split(" ");
-        return deserializeHelper(preorder, Integer.MIN_VALUE, Integer.MAX_VALUE);
+        return constructTree(preorder, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 }
 
