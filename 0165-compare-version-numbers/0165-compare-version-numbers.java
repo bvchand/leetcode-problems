@@ -1,6 +1,10 @@
+/*
+time = O(max(N,M))
+space = O(max(N,M))
+*/
+
 class Solution {
     public Pair<Integer, Integer> getRevision(String version, int start, int length) {
-        
         if (start >= length)
             return new Pair(0, length);
         
