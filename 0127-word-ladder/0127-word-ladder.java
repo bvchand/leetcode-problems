@@ -9,9 +9,7 @@ class Solution {
                 wordMap.computeIfAbsent(newWord, val -> new ArrayList<String>()).add(word);
             }
         }
-        
-        // System.out.println(wordMap.toString());
-        
+                
         Queue<Pair<String, Integer>> queue = new LinkedList<>();
         queue.offer(new Pair(beginWord, 1));
         
