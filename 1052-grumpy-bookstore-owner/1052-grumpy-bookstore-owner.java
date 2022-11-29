@@ -15,3 +15,9 @@ class Solution {
         return sum + maxSatisfied;
     }
 }
+
+/*
+Sliding window
+time: O(n)
+space: O(1)
+*/
