@@ -7,6 +7,11 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+/*
+preorder
+time: O(N)
+space: O(N)
+*/
 public class Codec {
     
     public StringBuilder preorderHelper(TreeNode root, StringBuilder sb) {
