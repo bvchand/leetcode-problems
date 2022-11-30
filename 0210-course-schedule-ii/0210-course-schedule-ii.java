@@ -1,3 +1,9 @@
+/*
+DFS + stack
+steps:
+1. detect if cycle exists --> if yes: return [] else mark all courses as 2
+2. perform dfs to perform topological sort
+*/
 class Solution {
     
     private final int WHITE = 0, BLACK = 1, GRAY = 2;
@@ -16,14 +22,13 @@ class Solution {
         if(this.visited[course] == GRAY)
             return false;
         
-        this.visited[course] = BLACK;
+        this.visited[course] = BLACK;   // mark course as visited
         List<Integer> prereq = this.adjList.getOrDefault(course, new ArrayList<Integer>());
-        // System.out.println(prereq.size());
         for(int nextCourse=0; nextCourse<prereq.size(); nextCourse++) {
             if(detectCycleHelper(prereq.get(nextCourse)))
                 return true;
         }
-        this.visited[course] = GRAY;
+        this.visited[course] = GRAY;    // mark course as processed
         return false;
     }
     
@@ -43,8 +48,8 @@ class Solution {
         this.visited[course] = WHITE;
         List<Integer> prereq = adjList.getOrDefault(course, new ArrayList<Integer>());
         for(int nextCourse=0; nextCourse<prereq.size(); nextCourse++) {
-            if(visited[prereq.get(nextCourse)] == GRAY) {
-                visited[prereq.get(nextCourse)] = WHITE;
+            if(this.visited[prereq.get(nextCourse)] == GRAY) {
+                this.visited[prereq.get(nextCourse)] = WHITE;
                 dfs(prereq.get(nextCourse));
             }
         }
@@ -65,7 +70,7 @@ class Solution {
             return this.result;
                     
         for(int course=0; course<numCourses; course++) {
-            if(visited[course] == GRAY) {
+            if(this.visited[course] == GRAY) {
                 dfs(course);
             }
         }
