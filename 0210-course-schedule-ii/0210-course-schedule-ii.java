@@ -34,10 +34,10 @@ class Solution {
     }
     
     
+    // topological sort - DFS
     public void dfs(int course, int numCourses, Map<Integer, List<Integer>> adjList, boolean[] visited, Stack<Integer> stack) {
         visited[course] = true;
         List<Integer> prereq = adjList.getOrDefault(course, new ArrayList<Integer>());
-        // System.out.println(prereq.toString());
         for(int i=0; i<prereq.size(); i++) {
             if(!visited[prereq.get(i)]) {
                 visited[prereq.get(i)] = true;
@@ -47,14 +47,11 @@ class Solution {
         stack.add(course);
     }
     
-        
+    
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         Map<Integer, List<Integer>> adjList = new HashMap<>();
         
         for(int[] courses: prerequisites) {
-            // List<Integer> lst = adjList.getOrDefault(courses[0], new ArrayList<Integer>());
-            // lst.add(courses[1]);
-            // adjList.put(courses[0], lst);
             adjList.computeIfAbsent(courses[1], val -> new ArrayList<Integer>()).add(courses[0]);
         }
         
@@ -62,10 +59,8 @@ class Solution {
         
         int[] result = {};
         
-        if(detectCycle(adjList, numCourses)) {
-            System.out.println("here");
+        if(detectCycle(adjList, numCourses))
             return result;
-        }
             
         
         boolean[] visited = new boolean[numCourses];
