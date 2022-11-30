@@ -30,7 +30,7 @@ class Solution {
     // technique for detecting cycle: graph coloring technique (dfs)
     public boolean detectCycle() {
         for(int course=0; course<this.numCourses; course++) {
-            if(this.visited[course] == 0)
+            if(this.visited[course] == WHITE)
                 if(detectCycleHelper(course))
                     return true;
         }
@@ -55,12 +55,12 @@ class Solution {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         this.numCourses = numCourses;
         this.visited = new int[numCourses];
+        Arrays.fill(this.visited, WHITE);
         
         for(int[] courses: prerequisites) {
             this.adjList.computeIfAbsent(courses[1], val -> new ArrayList<Integer>()).add(courses[0]);
         }
                 
-        Arrays.fill(this.visited, WHITE);
         if(detectCycle())
             return this.result;
                     
