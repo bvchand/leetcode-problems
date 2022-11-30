@@ -1,33 +1,36 @@
 class Solution {
     
-    public boolean detectCycleHelper(int course, Map<Integer, List<Integer>> adjList, int[] visited) {
+    private Map<Integer, List<Integer>> adjList = new HashMap<>();
+    private Stack<Integer> stack = new Stack<>();
+    private int[] result = {};
+    private int numCourses;
+    private int[] visited;
+    
+    public boolean detectCycleHelper(int course) {
         
         // if a course is visited
-        if(visited[course] == 1)
+        if(this.visited[course] == 1)
             return true;
         // if a course is visited and processed (all child nodes are visited)
-        if(visited[course] == 2)
+        if(this.visited[course] == 2)
             return false;
         
-        visited[course] = 1;
-        List<Integer> prereq = adjList.getOrDefault(course, new ArrayList<Integer>());
+        this.visited[course] = 1;
+        List<Integer> prereq = this.adjList.getOrDefault(course, new ArrayList<Integer>());
         // System.out.println(prereq.size());
-        for(int i=0; i<prereq.size(); i++) {
-            if(detectCycleHelper(prereq.get(i), adjList, visited))
+        for(int nextCourse=0; nextCourse<prereq.size(); nextCourse++) {
+            if(detectCycleHelper(prereq.get(nextCourse)))
                 return true;
         }
-        visited[course] = 2;
+        this.visited[course] = 2;
         return false;
     }
     
     // technique for detecting cycle: graph coloring technique (dfs)
-    public boolean detectCycle(Map<Integer, List<Integer>> adjList, int numCourses) {
-        int[] visited = new int[numCourses];
-        Arrays.fill(visited, 0);
-        
-        for(int i=0; i<numCourses; i++) {
-            if(visited[i] == 0)
-                if(detectCycleHelper(i, adjList, visited))
+    public boolean detectCycle() {
+        for(int course=0; course<this.numCourses; course++) {
+            if(this.visited[course] == 0)
+                if(detectCycleHelper(course))
                     return true;
         }
         return false;
@@ -35,13 +38,13 @@ class Solution {
     
     
     // topological sort - DFS
-    public void dfs(int course, int numCourses, Map<Integer, List<Integer>> adjList, boolean[] visited, Stack<Integer> stack) {
-        visited[course] = true;
+    public void dfs(int course) {
+        this.visited[course] = 0;
         List<Integer> prereq = adjList.getOrDefault(course, new ArrayList<Integer>());
-        for(int i=0; i<prereq.size(); i++) {
-            if(!visited[prereq.get(i)]) {
-                visited[prereq.get(i)] = true;
-                dfs(prereq.get(i), numCourses, adjList, visited, stack);
+        for(int nextCourse=0; nextCourse<prereq.size(); nextCourse++) {
+            if(visited[prereq.get(nextCourse)] == 2) {
+                visited[prereq.get(nextCourse)] = 0;
+                dfs(prereq.get(nextCourse));
             }
         }
         stack.add(course);
@@ -49,35 +52,29 @@ class Solution {
     
     
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-        Map<Integer, List<Integer>> adjList = new HashMap<>();
+        this.numCourses = numCourses;
+        this.visited = new int[numCourses];
         
         for(int[] courses: prerequisites) {
-            adjList.computeIfAbsent(courses[1], val -> new ArrayList<Integer>()).add(courses[0]);
+            this.adjList.computeIfAbsent(courses[1], val -> new ArrayList<Integer>()).add(courses[0]);
         }
         
         System.out.println(adjList.toString());
         
-        int[] result = {};
-        
-        if(detectCycle(adjList, numCourses))
-            return result;
-            
-        
-        boolean[] visited = new boolean[numCourses];
-        Arrays.fill(visited, false);
-        
-        Stack<Integer> stack = new Stack<>();
-        
-        for(int i=0; i<numCourses; i++) {
-            if(!visited[i]) {
-                dfs(i, numCourses, adjList, visited, stack);
+        Arrays.fill(this.visited, 0);
+        if(detectCycle())
+            return this.result;
+                    
+        for(int course=0; course<numCourses; course++) {
+            if(visited[course] == 2) {
+                dfs(course);
             }
         }
         
-        result = new int[numCourses];
+        this.result = new int[numCourses];
         for(int i=0; i<numCourses; i++)
-            result[i] = stack.pop();
+            this.result[i] = stack.pop();
         
-        return result;
+        return this.result;
     }
 }
