@@ -65,10 +65,12 @@ class Solution {
         for(int[] courses: prerequisites) {
             this.adjList.computeIfAbsent(courses[1], val -> new ArrayList<Integer>()).add(courses[0]);
         }
-                
+           
+        // detect if cycle exists
         if(detectCycle())
             return this.result;
-                    
+            
+        // topological sort
         for(int course=0; course<numCourses; course++) {
             if(this.visited[course] == GRAY) {
                 dfs(course);
