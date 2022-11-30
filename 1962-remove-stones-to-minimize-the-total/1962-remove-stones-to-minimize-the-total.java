@@ -7,16 +7,13 @@ class Solution {
             maxHeap.add(stones);
             sum += stones;
         }
-            
-        
+              
         for(int i=0; i<k; i++) {
             int n = maxHeap.poll();
-            int floor = n/2;
-            
+            int floor = n/2;        
             sum -= floor;
             maxHeap.add(n-floor);
         }
-        
         return sum;
     }
 }
