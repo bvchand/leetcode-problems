@@ -58,9 +58,7 @@ class Solution {
         for(int[] courses: prerequisites) {
             this.adjList.computeIfAbsent(courses[1], val -> new ArrayList<Integer>()).add(courses[0]);
         }
-        
-        System.out.println(adjList.toString());
-        
+                
         Arrays.fill(this.visited, 0);
         if(detectCycle())
             return this.result;
