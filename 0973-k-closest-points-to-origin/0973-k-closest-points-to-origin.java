@@ -12,7 +12,6 @@ class Solution {
         for(int i=0; i<k; i++) {
             res[i] = maxHeap.poll();
         }
-        
         return res;
     }
 }
