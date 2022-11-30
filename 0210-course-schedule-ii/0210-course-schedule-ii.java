@@ -1,5 +1,6 @@
 class Solution {
     
+    private final int WHITE = 0, BLACK = 1, GRAY = 2;
     private Map<Integer, List<Integer>> adjList = new HashMap<>();
     private Stack<Integer> stack = new Stack<>();
     private int[] result = {};
@@ -9,20 +10,20 @@ class Solution {
     public boolean detectCycleHelper(int course) {
         
         // if a course is visited
-        if(this.visited[course] == 1)
+        if(this.visited[course] == BLACK)
             return true;
         // if a course is visited and processed (all child nodes are visited)
-        if(this.visited[course] == 2)
+        if(this.visited[course] == GRAY)
             return false;
         
-        this.visited[course] = 1;
+        this.visited[course] = BLACK;
         List<Integer> prereq = this.adjList.getOrDefault(course, new ArrayList<Integer>());
         // System.out.println(prereq.size());
         for(int nextCourse=0; nextCourse<prereq.size(); nextCourse++) {
             if(detectCycleHelper(prereq.get(nextCourse)))
                 return true;
         }
-        this.visited[course] = 2;
+        this.visited[course] = GRAY;
         return false;
     }
     
@@ -39,11 +40,11 @@ class Solution {
     
     // topological sort - DFS
     public void dfs(int course) {
-        this.visited[course] = 0;
+        this.visited[course] = WHITE;
         List<Integer> prereq = adjList.getOrDefault(course, new ArrayList<Integer>());
         for(int nextCourse=0; nextCourse<prereq.size(); nextCourse++) {
-            if(visited[prereq.get(nextCourse)] == 2) {
-                visited[prereq.get(nextCourse)] = 0;
+            if(visited[prereq.get(nextCourse)] == GRAY) {
+                visited[prereq.get(nextCourse)] = WHITE;
                 dfs(prereq.get(nextCourse));
             }
         }
@@ -59,12 +60,12 @@ class Solution {
             this.adjList.computeIfAbsent(courses[1], val -> new ArrayList<Integer>()).add(courses[0]);
         }
                 
-        Arrays.fill(this.visited, 0);
+        Arrays.fill(this.visited, WHITE);
         if(detectCycle())
             return this.result;
                     
         for(int course=0; course<numCourses; course++) {
-            if(visited[course] == 2) {
+            if(visited[course] == GRAY) {
                 dfs(course);
             }
         }
