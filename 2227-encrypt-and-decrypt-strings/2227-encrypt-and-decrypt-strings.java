@@ -1,7 +1,8 @@
 class Encrypter {
     
-    private Map<Character, String> key2value = new HashMap<>();;
-    private Map<String, List<String>> encryptedDict = new HashMap<>();;
+    private Map<Character, String> key2value = new HashMap<>();
+    private Map<String, List<String>> encryptedDict = new HashMap<>();
+    private Set<Character> key_set = this.key2value.keySet();
 
     public Encrypter(char[] keys, String[] values, String[] dictionary) {        
         for(int i=0; i<keys.length; i++) {
@@ -14,12 +15,11 @@ class Encrypter {
         }   
     }
     
+    // 
     public String encrypt(String word1) {
         StringBuilder sb = new StringBuilder();
-        Set<Character> key_set = this.key2value.keySet();
-        
         for (char c: word1.toCharArray()) {
-            if(key_set.contains(c))
+            if(this.key_set.contains(c))
                 sb.append(this.key2value.get(c));
             else
                 return "";
@@ -27,6 +27,7 @@ class Encrypter {
         return sb.toString();
     }
     
+    // O(1)
     public int decrypt(String word2) {
         // System.out.println(encryptedDict.toString());
         if (this.encryptedDict.containsKey(word2))
