@@ -6,10 +6,12 @@ space: O(n)
 class Solution {
     public String frequencySort(String s) {
         HashMap<Character, Integer> freqMap = new HashMap<>();
+        int maxFreq = Integer.MIN_VALUE;
         
         for (char ch: s.toCharArray()) {
-            int val = freqMap.getOrDefault(ch, 0);
-            freqMap.put(ch, val+1);
+            int val = freqMap.getOrDefault(ch, 0)+1;
+            freqMap.put(ch, val);
+            maxFreq = Math.max(maxFreq, val);
         }
         
         List<List<Character>> buckets = new ArrayList<>();
@@ -23,7 +25,7 @@ class Solution {
         }
          
         StringBuilder res = new StringBuilder();
-        for(int i=buckets.size()-1; i >= 0; i--) {
+        for(int i=maxFreq; i >= 0; i--) {
             List<Character> chars = buckets.get(i);
             for (char ch: chars) {
                 int times = freqMap.get(ch);
