@@ -2,12 +2,13 @@ class Solution {
     public String decodeMessage(String key, String message) {
         char[] dict = new char[26];
         int alphabet='a';   // 97
-        for(int i=0; i<key.length(); i++) {
-            char c = key.charAt(i);
+        for(char c:key.toCharArray()) {
+            // char c = key.charAt(i);
             if (c == ' ')
                 continue;
             if(dict[c-'a'] == 0) {
                 dict[c-'a'] = (char) alphabet++;
+                // System.out.println(dict[c-'a']);
             }
         }
                 
