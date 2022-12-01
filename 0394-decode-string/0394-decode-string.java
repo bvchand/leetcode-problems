@@ -20,11 +20,11 @@ class Solution {
                 }
                 index++; // to avoid '['
                 String decodedString = decodeString(s);
-                index++; // to avoid ']'
                 while (k > 0) {
                     sb.append(decodedString);
                     k--;
-                }   
+                }  
+                index++; // to avoid ']'
             }
         }
         return sb.toString();
