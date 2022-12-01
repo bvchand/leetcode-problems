@@ -20,11 +20,8 @@ class Solution {
             } 
         }
         List<String> res = new ArrayList<>();
-        Iterator<String> itr = domainCountMap.keySet().iterator();
-        while(itr.hasNext()) {
-            String domain = itr.next();
-            Integer count = domainCountMap.get(domain);
-            res.add(count.toString() + " " + domain);
+        for(String dom: domainCountMap.keySet()) {
+            res.add(domainCountMap.get(dom) + " " + dom);
         }
         return res;
     }
