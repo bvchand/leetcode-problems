@@ -14,11 +14,11 @@ class Solution {
         List<Integer> nextCourses = this.adjList.getOrDefault(course, new ArrayList<Integer>());
         for(int nextCourse=0; nextCourse<nextCourses.size(); nextCourse++) {
             if(detectCycle(nextCourses.get(nextCourse)))
-                return true;
+                return true; // cycle exists; impossible to finish all the courses
         }
         visited[course] = PROCESSED;
         
-        return false;
+        return false; // cycle doesn't exist; possible to finish all the courses
     }
     
     public boolean canFinish(int numCourses, int[][] prerequisites) {
@@ -26,6 +26,7 @@ class Solution {
         this.visited = new int[numCourses];
         Arrays.fill(this.visited, UNVISITED);
         
+        // adjList.key --> prereq; adjList.value --> dependent courses
         for(int[] courses: prerequisites) {
             int course = courses[0];
             int prereq = courses[1];
@@ -35,9 +36,15 @@ class Solution {
         for(int course=0; course<numCourses; course++) {
             if(this.visited[course] == UNVISITED) {
                 if(detectCycle(course)) 
-                    return false;
+                    return false; // cycle exists; impossible to finish all the courses
             }
         }
-        return true;
+        return true; // cycle doesn't exist; possible to finish all the courses
     }
 }
+
+/*
+DFS
+time: O(V+E)
+space: O(V+E)
+*/
