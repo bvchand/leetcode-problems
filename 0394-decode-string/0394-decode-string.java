@@ -1,5 +1,7 @@
 /*
 recursion
+time: O(maxK.n)
+space: O(n)
 */
 class Solution {
     private Stack<Integer> stack = new Stack<>();
@@ -11,17 +13,17 @@ class Solution {
             if(!Character.isDigit(s.charAt(index)))
                 sb.append(s.charAt(index++));
             else {
-                int n = 0;
+                int k = 0;
                 while(index < s.length() && 
                       Character.isDigit(s.charAt(index))) {
-                    n = n*10 + s.charAt(index++) -'0';
+                    k = k*10 + s.charAt(index++) -'0';
                 }
                 index++; // to avoid '['
                 String decodedString = decodeString(s);
-                index++;
-                while (n > 0) {
+                index++; // to avoid ']'
+                while (k > 0) {
                     sb.append(decodedString);
-                    n--;
+                    k--;
                 }   
             }
         }
