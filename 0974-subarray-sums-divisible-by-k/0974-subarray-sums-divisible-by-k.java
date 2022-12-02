@@ -7,7 +7,7 @@ class Solution {
         for(int num: nums) {
             sum += num;
             int rem = ((sum % k)+k)%k;
-            System.out.println(num +" " + sum + " " + rem);
+            // System.out.println(num +" " + sum + " " + rem);
             if (rem == 0)
                 ans++;
             if(map.containsKey(rem))
