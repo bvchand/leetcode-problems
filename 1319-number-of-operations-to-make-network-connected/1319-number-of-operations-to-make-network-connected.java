@@ -1,5 +1,5 @@
 class Solution {
-    private Integer[] parent;
+    private int[] parent;
     private int[] rank;
     
     public int find(int node) {
@@ -25,7 +25,7 @@ class Solution {
     }
     
     public int makeConnected(int n, int[][] connections) {
-        this.parent = new Integer[n];
+        this.parent = new int[n];
         this.rank = new int[n];
         
         for(int i=0; i<n; i++)
