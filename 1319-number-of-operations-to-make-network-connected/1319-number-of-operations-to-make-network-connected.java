@@ -1,6 +1,7 @@
 class Solution {
     private int[] parent;
     private int[] rank;
+    private int reorder;
     
     public int find(int node) {
         int result = node;
@@ -21,7 +22,7 @@ class Solution {
                 this.parent[par2] = par1;
                 this.rank[par1] += this.rank[par2];
             }    
-        }    
+        } 
     }
     
     public int makeConnected(int n, int[][] connections) {
@@ -44,7 +45,7 @@ class Solution {
         // System.out.println(set.toString());
         
         // Set<Integer> set = new HashSet(Arrays.asList(parent));
-
+                
         return connections.length < n-1 ? -1 : set.size()-1;
     }
 }
