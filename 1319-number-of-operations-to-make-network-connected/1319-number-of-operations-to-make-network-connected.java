@@ -5,6 +5,7 @@ class Solution {
     public int find(int node) {
         int result = node;
         while(this.parent[result] != result) {
+            this.parent[result] = this.parent[parent[result]];
             result = this.parent[result];
         }
         return result;
@@ -39,6 +40,10 @@ class Solution {
         Set<Integer> set = new HashSet();
         for(int i=0;i<n;i++)
             set.add(find(i));
+        // System.out.println(Arrays.asList(parent).toString());
+        // System.out.println(set.toString());
+        
+        // Set<Integer> set = new HashSet(Arrays.asList(parent));
 
         return connections.length < n-1 ? -1 : set.size()-1;
     }
