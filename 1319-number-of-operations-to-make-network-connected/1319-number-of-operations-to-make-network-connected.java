@@ -38,7 +38,7 @@ class Solution {
         }
         
         Set<Integer> set = new HashSet();
-        for(int i=0;i<n;i++)
+        for(int i=0;i < n;i++)
             set.add(find(i));
         // System.out.println(Arrays.asList(parent).toString());
         // System.out.println(set.toString());
