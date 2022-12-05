@@ -2,6 +2,7 @@ class Solution {
     public int findMinDifference(List<String> timePoints) {
         boolean[] timeSeen = new boolean[24*60];    // 1440
         
+        // convert all the HH:MM to minutes and fill in a boolean array with minutes seen
         for(String timePoint: timePoints) {
             String[] time = timePoint.split(":");
             int hour = Integer.parseInt(time[0]), min = Integer.parseInt(time[1]);
@@ -16,6 +17,7 @@ class Solution {
         Integer firstTime = null, prevTime = null;
         int minDiff = Integer.MAX_VALUE;
         
+        // traverse through the boolean array and check the diff between 2 consecutive "seen" times, both forwards and backwards, and compute the min diff
         for(int i=0; i<timeSeen.length; i++) {
             if(timeSeen[i] == true) {
                 if(firstTime == null) {
