@@ -35,9 +35,7 @@ class Trie {
     
     public boolean search(String word) {
         Node node = getNode(word);
-        if(node != null && node.isEnd == true)
-            return true;
-        return false;
+        return node != null && node.isEnd == true;
     }
     
     public boolean startsWith(String prefix) {
