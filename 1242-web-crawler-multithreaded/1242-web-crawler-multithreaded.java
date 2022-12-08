@@ -9,17 +9,18 @@ class Solution {
     Set<String> crawledUrls = new HashSet<>();
     
     public List<String> crawl(String startUrl, HtmlParser htmlParser) {
-        Stream<String> result = processUrl(startUrl, htmlParser, getHostName(startUrl));
-        return result.collect(Collectors.toList());
+        processUrl(startUrl, htmlParser, getHostName(startUrl));
+        List<String> result = new ArrayList<>();
+        result.addAll(crawledUrls);
+        return result;
     }
     
-    public Stream<String> processUrl(String currUrl, HtmlParser htmlParser, String hostName) {
-        if(!crawledUrls.add(currUrl) || !Objects.equals(hostName, getHostName(currUrl)))
-            return Stream.empty();
+    public void processUrl(String currUrl, HtmlParser htmlParser, String hostName) {
+        crawledUrls.add(currUrl);
         
-        List<String> urls = htmlParser.getUrls(currUrl);
+        List<String> childUrls = htmlParser.getUrls(currUrl);
         
-        return Stream.concat(Stream.of(currUrl), urls.parallelStream().flatMap(next -> processUrl(next, htmlParser, hostName)));
+        childUrls.parallelStream().filter(nextUrl -> !crawledUrls.contains(nextUrl) && Objects.equals(hostName, getHostName(nextUrl))).forEach(nextUrl -> processUrl(nextUrl, htmlParser, hostName));
     }
     
     public String getHostName(String url) {
