@@ -24,6 +24,5 @@ class TrafficLight {
         } finally {
             lock.unlock();
         }
-        
     }
 }
