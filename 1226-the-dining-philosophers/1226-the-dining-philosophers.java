@@ -1,47 +1,39 @@
 class DiningPhilosophers {
 
-    private Lock leftForkLock = new ReentrantLock();
-    private Lock rightForkLock = new ReentrantLock();
+    public Semaphore[] forkLocks;
 
     public DiningPhilosophers() {
-
+        this.forkLocks = new Semaphore[5];
+        for (int i=0; i<5; i++) {
+            this.forkLocks[i] = new Semaphore(1);
+        }
     }
 
     // call the run() method of any runnable to execute its code
-    public void wantsToEat(int philosopher,
+    public void wantsToEat(int phil,
                            Runnable pickLeftFork,
                            Runnable pickRightFork,
                            Runnable eat,
                            Runnable putLeftFork,
                            Runnable putRightFork) throws InterruptedException {
-
-
-        while(true) {
-            if(leftForkLock.tryLock(100, TimeUnit.MILLISECONDS)) {
-                try {
-                    pickLeftFork.run();
-
-                    if (rightForkLock.tryLock(100, TimeUnit.MILLISECONDS)) {
-                        try {
-                            pickRightFork.run();
-                            eat.run();
-                            putRightFork.run();
-
-                            /*
-                             * we have eaten
-                             */
-                            return;
-                        } finally {
-                            rightForkLock.unlock();
-                        }
-                    }
-
-
-                } finally {
-                    putLeftFork.run();
-                    leftForkLock.unlock();
-                }
-            }
-        }
+        
+        int nextPhil = (phil + 1) % 5;
+        
+        int leftFork = (phil + (phil % 2)) % 5;
+        int rightFork = (phil + ((phil + 1) % 2)) % 5;
+        
+        
+        this.forkLocks[leftFork].acquire();         // fork 1
+        this.forkLocks[rightFork].acquire();        // fork 2
+        
+        pickLeftFork.run();
+        pickRightFork.run();
+        eat.run();
+        putLeftFork.run();
+        putRightFork.run();
+        
+        this.forkLocks[leftFork].release();         // fork 1
+        this.forkLocks[rightFork].release();        // fork 2
+    
     }
 }
