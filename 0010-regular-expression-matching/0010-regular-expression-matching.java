@@ -17,7 +17,8 @@ class Solution {
         
         boolean ans;
         
-        boolean charMatch = i < sLen && (string.charAt(i) == pattern.charAt(j) || pattern.charAt(j) == '.');
+        boolean charMatch = (i < sLen) && (string.charAt(i) == pattern.charAt(j) || pattern.charAt(j) == '.');
+        
         if((j+1 < pLen) && (pattern.charAt(j+1) == '*'))
             ans = dfs(i, j+2) || (charMatch && dfs(i+1, j));
         else
