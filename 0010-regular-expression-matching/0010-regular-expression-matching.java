@@ -19,12 +19,19 @@ class Solution {
         
         boolean charMatch = (i < sLen) && (string.charAt(i) == pattern.charAt(j) || pattern.charAt(j) == '.');
         
-        if((j+1 < pLen) && (pattern.charAt(j+1) == '*'))
-            ans = dfs(i, j+2) || (charMatch && dfs(i+1, j));
-        else
-            ans = charMatch && dfs(i+1, j+1);
+        System.out.println("charMatch " + currIndex.toString() + " " + charMatch);
         
+        if((j+1 < pLen) && (pattern.charAt(j+1) == '*')) {
+            ans = dfs(i, j+2) || (charMatch && dfs(i+1, j));
+            System.out.println("j+1 == * " + currIndex.toString() + " " + ans);
+        }
+        else {
+            ans = charMatch && dfs(i+1, j+1);
+            System.out.println("j+1 != * " + currIndex.toString() + " " + ans);
+        }
+    
         memo.put(currIndex, ans);
+        System.out.println(memo.toString() + "\n");
         return ans;
     }
     
