@@ -14,19 +14,49 @@
  * }
  */
 
+/*
+iterative
+space: O(1)
+*/
+
 class Solution {
-    public TreeNode currNode = null;
     
-    public void flatten(TreeNode root) {
-        if(root != null) {
-            flatten(root.right);
-            flatten(root.left);
-            root.right = currNode;
-            root.left = null;
-            currNode = root;
+    public void flatten(TreeNode node) {
+        TreeNode root = node;
+        while(root != null) {
+            if(root.left != null) {
+                TreeNode rightMost = root.left;
+                
+                while(rightMost.right != null)
+                    rightMost = rightMost.right;
+                
+                rightMost.right = root.right;
+                root.right = root.left;
+                root.left = null;
+            }
+            root = root.right;
         }
     }
 }
+
+/*
+Similar to postorde traversal (but going to right first)
+time & space: O(N)
+*/
+
+// class Solution {
+//     public TreeNode currNode = null;
+    
+//     public void flatten(TreeNode root) {
+//         if(root != null) {
+//             flatten(root.right);
+//             flatten(root.left);
+//             root.right = currNode;
+//             root.left = null;
+//             currNode = root;
+//         }
+//     }
+// }
 
 
 
