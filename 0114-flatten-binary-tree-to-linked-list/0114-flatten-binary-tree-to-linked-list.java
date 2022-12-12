@@ -13,27 +13,44 @@
  *     }
  * }
  */
+
 class Solution {
-    Queue<TreeNode> queue = new LinkedList<>();
-    
-    public void preorder(TreeNode node) {
-        if(node != null) {
-            queue.offer(node);
-            preorder(node.left);
-            preorder(node.right);
-        }
-    }
+    public TreeNode currNode = null;
     
     public void flatten(TreeNode root) {
-        preorder(root);
-        
-        TreeNode curr = queue.poll();
-        
-        while(!queue.isEmpty()) {
-            TreeNode next = queue.poll();
-            curr.left = null;
-            curr.right = next;
-            curr = next;
-        }            
+        if(root != null) {
+            flatten(root.right);
+            flatten(root.left);
+            root.right = currNode;
+            root.left = null;
+            currNode = root;
+        }
     }
 }
+
+
+
+// class Solution {
+//     Queue<TreeNode> queue = new LinkedList<>();
+    
+//     public void preorder(TreeNode node) {
+//         if(node != null) {
+//             queue.offer(node);
+//             preorder(node.left);
+//             preorder(node.right);
+//         }
+//     }
+    
+//     public void flatten(TreeNode root) {
+//         preorder(root);
+        
+//         TreeNode curr = queue.poll();
+        
+//         while(!queue.isEmpty()) {
+//             TreeNode next = queue.poll();
+//             curr.left = null;
+//             curr.right = next;
+//             curr = next;
+//         }            
+//     }
+// }
