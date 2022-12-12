@@ -9,7 +9,7 @@ class Solution {
             else 
                 map.get(ch).set(1, i);
         }
-        System.out.println(map.toString());
+        // System.out.println(map.toString());
         
         List<List<Integer>> intervals = new ArrayList<>(map.values());
         LinkedList<List<Integer>> finalIntervals = new LinkedList<>();
