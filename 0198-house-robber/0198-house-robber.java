@@ -1,3 +1,8 @@
+/*
+bottom-up DP
+time: O(n)
+space: O(1)
+*/
 class Solution {
     public int rob(int[] nums) {
         int n = nums.length;
@@ -5,9 +10,9 @@ class Solution {
         if(n == 0)
             return 0;
         
-        int next2NextHouse = 0, nextHouse = nums[n-1];
+        int next2NextHouse = 0, nextHouse = 0;
         
-        for(int i = n-2; i >= 0; i--) {
+        for(int i = 0; i < n; i++) {
             int temp = Math.max(nums[i] + next2NextHouse, nextHouse);
             next2NextHouse = nextHouse;
             nextHouse = temp;
@@ -16,6 +21,12 @@ class Solution {
         return nextHouse;
     }
 }
+
+
+/*
+bottom-up DP
+time & space: O(n)
+*/
 
 // class Solution {
 //     public int rob(int[] nums) {
@@ -33,6 +44,3 @@ class Solution {
 //     }
 // }
 
-/*
-time & space: O(n)
-*/
