@@ -1,32 +1,34 @@
 class MyQueue {
     Stack<Integer> stack1;
     Stack<Integer> stack2;
+    Integer front;
 
     public MyQueue() {
         this.stack1 = new Stack<>();
         this.stack2 = new Stack<>();
+        this.front = null;
     }
     
+    // O(1)
     public void push(int x) {
-        if((stack1.isEmpty() && stack2.isEmpty()) || !stack1.isEmpty())
-            stack1.push(x);
+        if(stack1.isEmpty()) {
+            front = x;
+        }
+        stack1.push(x);
     }
     
     public int pop() {
         transferValues(stack1, stack2);
         int res = stack2.pop();
+        if(!stack2.isEmpty())
+            front = stack2.peek();
         transferValues(stack2, stack1);
         
         return res;
     }
     
     public int peek() {
-        transferValues(stack1, stack2);
-        int res = stack2.peek();
-        transferValues(stack2, stack1);
-        
-        return res;
-        
+        return front;
     }
     
     public boolean empty() {
@@ -34,10 +36,8 @@ class MyQueue {
     }
     
     private void transferValues(Stack<Integer> s1, Stack<Integer> s2) {
-        int n1 = s1.size();
-        for(int i=0; i<n1; i++) {
-            int temp = s1.pop();
-            s2.push(temp);
+        while(!s1.isEmpty()) {
+            s2.push(s1.pop());
         }
     }
 }
