@@ -17,28 +17,26 @@ class MyQueue {
         stack1.push(x);
     }
     
+    // O(n)
     public int pop() {
-        transferValues(stack1, stack2);
-        int res = stack2.pop();
-        if(!stack2.isEmpty())
-            front = stack2.peek();
-        transferValues(stack2, stack1);
-        
-        return res;
+        if(stack2.isEmpty()) {
+            while(!stack1.isEmpty()) {
+                stack2.push(stack1.pop());
+            }
+        }
+        return stack2.pop();
     }
     
+    // O(1)
     public int peek() {
+        if(!stack2.isEmpty())
+            return stack2.peek();
         return front;
     }
     
+    // O(1)
     public boolean empty() {
         return stack1.isEmpty() && stack2.isEmpty();
-    }
-    
-    private void transferValues(Stack<Integer> s1, Stack<Integer> s2) {
-        while(!s1.isEmpty()) {
-            s2.push(s1.pop());
-        }
     }
 }
 
