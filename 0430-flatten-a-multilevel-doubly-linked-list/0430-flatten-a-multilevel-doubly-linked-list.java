@@ -37,8 +37,8 @@ class Solution {
             prev = curr;
         }
         
-        head.prev = null;
-        return head;
+        dummyHead.next.prev = null;
+        return dummyHead.next;
     }
 }
 
