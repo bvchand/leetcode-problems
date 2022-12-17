@@ -13,12 +13,10 @@ class Solution {
             for(int bananasPerPile: piles)
                 hoursSpent += Math.ceil((double) bananasPerPile/midSpeed);
             
-            if(hoursSpent <= h) // can eat a little slower
+            if(hoursSpent <= h) // can eat a little slower or eating at the exact speed
                 right = midSpeed;
             else if(hoursSpent > h) // should eat a little faster
                 left = midSpeed + 1; 
-            // else
-            //     return midSpeed;
         }
         return right;
     }
