@@ -1,7 +1,5 @@
 class Solution {
-    public List<List<String>> groupAnagrams(String[] strs) {
-        List<List<String>> result = new ArrayList<>();
-        
+    public List<List<String>> groupAnagrams(String[] strs) {        
         Map<String, List<String>> ans = new HashMap<>();
         int[] count = new int[26];
         for(String str: strs) {
@@ -22,9 +20,8 @@ class Solution {
             ans.computeIfAbsent(sb.toString(), val -> new ArrayList<>()).add(str);
         }
         
-        for(String key: ans.keySet())
-            result.add(ans.get(key));
-        
-        return result;
+        return new ArrayList(ans.values());
     }
 }
+
+// time and space: O(N*K)
