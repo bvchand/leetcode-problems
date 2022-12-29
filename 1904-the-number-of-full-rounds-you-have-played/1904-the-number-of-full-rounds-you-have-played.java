@@ -1,10 +1,7 @@
 class Solution {
     public int numberOfRounds(String loginTime, String logoutTime) {
-        String[] time = loginTime.split(":");
-        int start = Integer.parseInt(time[0])*60 + Integer.parseInt(time[1]);
-        
-        time = logoutTime.split(":");
-        int end = Integer.parseInt(time[0])*60 + Integer.parseInt(time[1]);
+        int start = Integer.parseInt(loginTime.split(":")[0])*60 + Integer.parseInt(loginTime.split(":")[1]);
+        int end = Integer.parseInt(logoutTime.split(":")[0])*60 + Integer.parseInt(logoutTime.split(":")[1]);
         
         if(start > end)
             end += (24*60);
