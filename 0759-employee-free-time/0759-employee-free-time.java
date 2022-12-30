@@ -30,9 +30,8 @@ class Solution {
             Interval next = pq.poll();
             if(curr.end >= next.start)
                 next.end = Math.max(curr.end, next.end);
-            else {
+            else
                 res.add(new Interval(curr.end, next.start));
-            }
             
             curr = next;
         }
