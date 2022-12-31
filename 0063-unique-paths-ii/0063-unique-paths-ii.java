@@ -16,8 +16,9 @@ class Solution {
         if(seen.containsKey(key))
             return seen.get(key);
   
-        if(r == rows-1 && c == cols-1) {
-            if(grid[r][c] == OBSTACLE)  return 0;
+        if(r == rows-1 && c == cols-1 && grid[r][c] != OBSTACLE) {
+            // if(grid[r][c] == OBSTACLE)  
+            //     return 0;
             return 1;
         }
         
