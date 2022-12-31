@@ -30,7 +30,7 @@ class Solution {
         int right = dfs(r, c+1);
         
         seen.put(key, down + right);
-        return down + right;
+        return seen.get(key);
     }
     
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
