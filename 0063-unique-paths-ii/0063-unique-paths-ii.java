@@ -10,7 +10,7 @@ class Solution {
             return 0;
         }
         
-        String key = Integer.toString(r) + "," + Integer.toString(c);
+        String key = String.valueOf(r) + "," + String.valueOf(c);
         // System.out.println(key);
         
         if(seen.containsKey(key))
