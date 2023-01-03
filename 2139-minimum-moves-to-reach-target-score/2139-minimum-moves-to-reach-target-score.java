@@ -4,10 +4,10 @@ class Solution {
         
         while(target > 1 && maxDoubles > 0) {
             if(target % 2 == 0) {
-                target = target/2;
+                target /= 2;
                 maxDoubles--;
             } else {
-                target = target - 1;
+                target--;
             }
             moves++;
         }
