@@ -21,7 +21,7 @@ class Solution {
         
         for(int i = 1; i <= m; i++) {
             for(int j = 1; j <= n; j++) {
-                for(int k = 1; k <= Math.min(m-i, n-j); k++) {     // consider every k * k possible square
+                for(int k = Math.min(m-i, n-j); k > res; k--) {     // consider every k * k possible square
                     int d1Sum = d1[i+k][j+k] - d1[i-1][j-1];
                     int d2Sum = d2[i+k][j] - d2[i-1][j+k+1];
                     boolean flag = d1Sum == d2Sum;
@@ -36,7 +36,7 @@ class Solution {
                         }
                     }
                     // System.out.println(d1Sum + " " + d2Sum);
-                    res = flag == true ? Math.max(res, k) : res;
+                    res = flag == true ? k : res;
                 }
             }
         }
