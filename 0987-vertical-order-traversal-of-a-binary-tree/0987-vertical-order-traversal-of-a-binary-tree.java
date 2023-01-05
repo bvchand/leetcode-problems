@@ -14,8 +14,9 @@
  * }
  */
 class Solution {
-    public List<List<Integer>> verticalTraversal(TreeNode root) {
-        Map<Integer, List<Pair<Integer, Integer>>> colMap = new TreeMap<>();
+    Map<Integer, List<Pair<Integer, Integer>>> colMap = new TreeMap<>();
+    
+    public void bfs(TreeNode root) {
         Queue<Pair<TreeNode, Pair<Integer, Integer>>> queue = new LinkedList<>();
         queue.offer(new Pair(root, new Pair(0, 0)));
         
@@ -31,8 +32,11 @@ class Solution {
                 queue.offer(new Pair(curr.right, new Pair(level+1, index+1)));
             }
         }
-        
+    }
+    public List<List<Integer>> verticalTraversal(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
+        
+        bfs(root);
         
         for(List<Pair<Integer, Integer>> colList: colMap.values()) {
             // System.out.println(colList);
