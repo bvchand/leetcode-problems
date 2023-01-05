@@ -14,7 +14,8 @@
  * }
  */
 class Solution {
-    Map<Integer, List<Pair<Integer, Integer>>> colMap = new TreeMap<>();
+    Map<Integer, List<Pair<Integer, Integer>>> colMap = new HashMap<>();
+    int minCol = 0, maxCol = 0;
     
     public void bfs(TreeNode root) {
         Queue<Pair<TreeNode, Pair<Integer, Integer>>> queue = new LinkedList<>();
@@ -28,6 +29,8 @@ class Solution {
             
             if(curr != null) {
                 colMap.computeIfAbsent(index, val -> new ArrayList<>()).add(new Pair(level, curr.val));
+                minCol = Math.min(minCol, index);
+                maxCol = Math.max(maxCol, index);
                 queue.offer(new Pair(curr.left, new Pair(level+1, index-1)));
                 queue.offer(new Pair(curr.right, new Pair(level+1, index+1)));
             }
@@ -38,7 +41,8 @@ class Solution {
         
         bfs(root);
         
-        for(List<Pair<Integer, Integer>> colList: colMap.values()) {
+        for(int i=minCol; i<=maxCol; i++) {
+            List<Pair<Integer, Integer>> colList = colMap.get(i);
             // System.out.println(colList);
             Collections.sort(colList, new Comparator<Pair<Integer, Integer>>() {
                 @Override
@@ -58,3 +62,5 @@ class Solution {
         return res;
     }
 }
+
+// bfs --> time: O(N log (N/K)) --> k: width of tree; space: O(N)
