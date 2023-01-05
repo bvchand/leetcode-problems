@@ -1,21 +1,23 @@
 class Solution {
+    static Map<String, Integer> map = new HashMap<>();
+
+    static{
+        map.put("I", 1);
+        map.put("V", 5);
+        map.put("X", 10);
+        map.put("L", 50);
+        map.put("C", 100);
+        map.put("D", 500);
+        map.put("M", 1000);
+        map.put("IV", 4);
+        map.put("IX", 9);
+        map.put("XL", 40);
+        map.put("XC", 90);
+        map.put("CD", 400);
+        map.put("CM", 900);
+    }
+    
     public int romanToInt(String s) {
-        Map<String, Integer> map = new HashMap<>() {{
-            put("I", 1);
-            put("V", 5);
-            put("X", 10);
-            put("L", 50);
-            put("C", 100);
-            put("D", 500);
-            put("M", 1000);
-            put("IV", 4);
-            put("IX", 9);
-            put("XL", 40);
-            put("XC", 90);
-            put("CD", 400);
-            put("CM", 900);
-        }};
-        
         int res = 0;
         for(int i=0; i<s.length(); i++) {
             // char c1 = s.charAt(i);
