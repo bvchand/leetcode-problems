@@ -19,7 +19,8 @@ class Solution {
             // found both the minK and maxK
             if(minIndex != -1 && maxIndex != -1)
                 // count += (r - l + 1) - (r - Math.min(minIndex, maxIndex));
-                count += Math.max(0, Math.min(minIndex, maxIndex) - l + 1);
+                count += Math.min(minIndex, maxIndex) - l + 1;
+            System.out.println(minIndex + " " + maxIndex + " " + count);
         }
         return count;
     }
