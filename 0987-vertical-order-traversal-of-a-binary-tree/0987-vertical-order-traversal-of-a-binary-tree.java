@@ -44,15 +44,22 @@ class Solution {
         for(int i=minCol; i<=maxCol; i++) {
             List<Pair<Integer, Integer>> colList = colMap.get(i);
             // System.out.println(colList);
-            Collections.sort(colList, new Comparator<Pair<Integer, Integer>>() {
-                @Override
-                public int compare(Pair<Integer, Integer> a, Pair<Integer, Integer> b) {
-                    if(a.getKey() == b.getKey())
-                        return a.getValue() - b.getValue();
-                    else
-                        return a.getKey() - b.getKey();
-                }
-            });
+            // Collections.sort(colList, new Comparator<Pair<Integer, Integer>>() {
+            //     @Override
+            //     public int compare(Pair<Integer, Integer> a, Pair<Integer, Integer> b) {
+            //         if(a.getKey() == b.getKey())
+            //             return a.getValue() - b.getValue();
+            //         else
+            //             return a.getKey() - b.getKey();
+            //     }
+            // });
+            
+            Collections.sort(colList, (a,b) -> {
+                if(a.getKey() == b.getKey())
+                    return a.getValue() - b.getValue();
+                else
+                    return a.getKey() - b.getKey();
+            } );
             
             List<Integer> temp = new ArrayList<>();
             for(Pair<Integer, Integer> node: colList)
