@@ -22,12 +22,14 @@ class Solution {
                 have += 1;
             
             while(have == need) {
+                // update the ans if resLen > current length
                 if(right - left + 1 < resLen) {
                     start = left;
                     end = right;
                     resLen = right - left + 1; 
                 }
                 
+                //pop char from the left pointer for as long as have == need
                 char leftChar = s.charAt(left);
                 sc.put(leftChar, sc.get(leftChar)-1);
                 if(tc.containsKey(leftChar) && sc.get(leftChar) < tc.get(leftChar))
@@ -38,3 +40,5 @@ class Solution {
         return resLen != Integer.MAX_VALUE ? s.substring(start, end+1) : "";
     }
 }
+
+// time: O(len(s) + len(t)) ; space: O(len(s) + len(t)) 
