@@ -1,18 +1,40 @@
 class Solution {
     public int firstMissingPositive(int[] nums) {
-        Set<Integer> set = new HashSet<>();
-        for(int num: nums) {
-            if(num > 0)
-                set.add(num);
+        boolean onePresent = false;
+        
+        for(int num: nums)
+            if(num == 1) {
+                onePresent = true;
+                break;
+            }
+                
+        
+        if(!onePresent)
+            return 1;
+        
+        // data clean-up
+        int n = nums.length;
+        for(int i=0; i < n; i++) {
+            if(nums[i] <= 0 || nums[i] > n)
+                nums[i] = 1;
+        }
+        
+        // now similar to find the duplicate number problem 
+        for(int i=0; i < n; i++) {
+            int index = Math.abs(nums[i]);
+            if(index == n)
+                nums[0] = -1 * Math.abs(nums[0]);
             else
-                set.add(0);
+                nums[index] = -1 * Math.abs(nums[index]);
         }
-        int i=1;
-        while(i <= nums.length) {
-            if(!set.contains(i))
+        
+        for(int i=1; i < n; i++) {
+            if(nums[i] > 0)
                 return i;
-            i++;
         }
-        return i;
+        
+        if(nums[0] > 0)
+            return n;
+        return n+1;
     }
 }
