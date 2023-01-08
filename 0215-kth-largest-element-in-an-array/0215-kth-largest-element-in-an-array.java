@@ -10,7 +10,11 @@ class Solution {
     
     // partition
     private int partition(int[] nums, int start, int end) {
-        Random ran = new Random();  
+        Random ran = new Random(); 
+        
+        if(start == end)
+            return start;
+        
         int pivotIdx = start + ran.nextInt(end - start);
         int pivot = nums[pivotIdx];
 
@@ -29,17 +33,30 @@ class Solution {
     }
     
     private int quickSelect(int[] nums, int start, int end, int k_smallest) {                      
-        if(start == end)
-            return nums[start];
+//         if(start == end)
+//             return nums[start];
         
-        int pivotPos = partition(nums, start, end);
+//         int pivotPos = partition(nums, start, end);
         
-        if(k_smallest == pivotPos)
-            return nums[pivotPos];
-        else if(k_smallest < pivotPos) {
-            return quickSelect(nums, start, pivotPos-1, k_smallest);
+//         if(k_smallest == pivotPos)
+//             return nums[pivotPos];
+//         else if(k_smallest < pivotPos) {
+//             return quickSelect(nums, start, pivotPos-1, k_smallest);
+//         }
+//         return quickSelect(nums, pivotPos+1, end, k_smallest); 
+        
+        // iterative
+        while(start <= end) {
+            int pivotPos = partition(nums, start, end);
+            
+            if(k_smallest == pivotPos)
+                return nums[pivotPos];
+            else if(k_smallest < pivotPos)
+                end = pivotPos - 1;
+            else
+                start = pivotPos + 1;
         }
-        return quickSelect(nums, pivotPos+1, end, k_smallest); 
+        return -1;
     }
     
     public int findKthLargest(int[] nums, int k) {
