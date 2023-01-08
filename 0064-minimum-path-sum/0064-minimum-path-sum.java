@@ -6,9 +6,9 @@ class Solution {
             for(int j = n-1; j >= 0; j--) {
                 if(i == m-1 && j == n-1)
                     continue;
-                else if(i == m-1 && j < n-1)    // last row
+                else if(i == m-1)    // last row
                     grid[i][j] += grid[i][j+1];
-                else if(j == n-1 && i < m-1)
+                else if(j == n-1)    // last col
                     grid[i][j] += grid[i+1][j];
                 else
                     grid[i][j] += Math.min(grid[i+1][j], grid[i][j+1]);
