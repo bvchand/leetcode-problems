@@ -1,24 +1,16 @@
 class Solution {
     public boolean checkAlmostEquivalent(String word1, String word2) {
         int n = word1.length();
-        Map<Character, Integer> map1 = new HashMap<>();
-        Map<Character, Integer> map2 = new HashMap<>();
+        int[] map1 = new int[26];
+        int[] map2 = new int[26];
         for(int i=0; i<n; i++) {
             char c1 = word1.charAt(i), c2 = word2.charAt(i);
-            map1.put(c1, map1.getOrDefault(c1, 0)+1);
-            map2.put(c2, map2.getOrDefault(c2, 0)+1);
+            map1[c1 - 'a']++;
+            map2[c2 - 'a']++;
         }
         
-        for(char c: map1.keySet()) {
-            int count1 = map1.get(c);
-            int count2 = map2.getOrDefault(c, 0);
-            if(Math.abs(count1-count2) > 3)
-                return false;
-        }
-        
-        for(char c: map2.keySet()) {
-            int count1 = map2.get(c);
-            int count2 = map1.getOrDefault(c, 0);
+        for(int i=0; i<26; i++) {
+            int count1 = map1[i], count2 = map2[i];
             if(Math.abs(count1-count2) > 3)
                 return false;
         }
