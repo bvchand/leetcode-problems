@@ -12,8 +12,8 @@ class Solution {
             return bits[a] - bits[b];
         });
         
-        for(int i=0; i<n; i++)
-            pq.add(arr[i]);
+        for(int num: arr)
+            pq.add(num);
         
         int index = 0;
         int[] res = new int[n];
