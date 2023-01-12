@@ -4,12 +4,16 @@ class Solution {
         if(n == 1)
             return "";
         
+        char[] palinArray = palindrome.toCharArray();
         for(int i=0; i<n/2; i++) {
             char c = palindrome.charAt(i);
-            if(c != 'a')
-                return palindrome.substring(0,i) + "a"+ palindrome.substring(i+1, n);
+            if(c != 'a') {
+                palinArray[i] = 'a';
+                return String.valueOf(palinArray);
+            }
+                
         }
-        
-        return palindrome.substring(0,n-1) + "b";
+        palinArray[n-1] = 'b';
+        return String.valueOf(palinArray);
     }
 }
