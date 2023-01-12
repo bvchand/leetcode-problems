@@ -5,8 +5,8 @@ class Solution {
         nums[j] = temp;
     }
     
-    public void reverse(int[] nums, int i) {
-        int j = nums.length-1;
+    public void reverse(int[] nums, int n, int i) {
+        int j = n-1;
         while(i < j) {
             swap(nums, i, j);
             i++;
@@ -15,9 +15,8 @@ class Solution {
     }
     
     public void nextPermutation(int[] nums) {
-        int n = nums.length;
+        int n = nums.length, i = n-2;
         
-        int i = n-2;
         while(i >= 0 && nums[i+1] <= nums[i])
             i--;
         if(i >= 0) {
@@ -26,6 +25,6 @@ class Solution {
                 j--;
             swap(nums, i, j);
         }
-        reverse(nums, i+1);
+        reverse(nums, n, i+1);
     }
 }
