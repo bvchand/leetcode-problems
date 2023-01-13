@@ -4,11 +4,7 @@ class Solution {
         PriorityQueue<Integer> minHeap = new PriorityQueue<Integer>((x, y) -> (x-y));
         
         // sort the intervals based on the start date --> O(NlogN)
-        Arrays.sort(intervals, new Comparator<int[]>() {
-            public int compare(int[] a, int[] b)  {
-                return a[0] - b[0];
-            }
-        });
+        Arrays.sort(intervals, (a,b) -> (a[0] - b[0]));
         
         minHeap.offer(intervals[0][1]); // add the first end date
         
