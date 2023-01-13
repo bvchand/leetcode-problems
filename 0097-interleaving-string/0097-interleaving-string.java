@@ -1,7 +1,7 @@
 class Solution {
     Map<String, Boolean> dp = new HashMap<>();
     
-    private boolean checkInterleave(char[] s1, char[] s2, char[] s3, int l1, int l2, int l3, int i, int j, int k) {
+    private boolean checkInterleave(String s1, String s2, String s3, int l1, int l2, int l3, int i, int j, int k) {
         String key = Integer.toString(i) + "#" + Integer.toString(j) + "#" + Integer.toString(k);
         
         // if reached the end of s3, return true
@@ -12,27 +12,19 @@ class Solution {
             return dp.get(key);
         
         if(i == l1) {
-            if(s2[j] == s3[k])
-                dp.put(key, checkInterleave(s1, s2, s3, l1, l2, l3, i, j+1, k+1));
-            else
-                dp.put(key, false);
-            
+            dp.put(key, s2.substring(j).equals(s3.substring(k)));
             return dp.get(key);
         }
         
         if(j == l2) {
-            if(s1[i] == s3[k])
-                dp.put(key, checkInterleave(s1, s2, s3, l1, l2, l3, i+1, j, k+1));
-            else
-                dp.put(key, false);
-            
+            dp.put(key, s1.substring(i).equals(s3.substring(k)));
             return dp.get(key);
         }
         
         boolean isPath1Correct = false, isPath2Correct = false;
-        if(s1[i] == s3[k])
+        if(s1.charAt(i) == s3.charAt(k))
             isPath1Correct = checkInterleave(s1, s2, s3, l1, l2, l3, i+1, j, k+1);
-        if(s2[j] == s3[k])
+        if(s2.charAt(j) == s3.charAt(k))
             isPath2Correct = checkInterleave(s1, s2, s3, l1, l2, l3, i, j+1, k+1);
         
         dp.put(key, isPath1Correct || isPath2Correct);
@@ -46,6 +38,7 @@ class Solution {
         if(l3 != l1 + l2)
             return false;
         
-        return checkInterleave(s1.toCharArray(), s2.toCharArray(), s3.toCharArray(), l1, l2, l3, i, j, k);
+        return checkInterleave(s1, s2, s3, l1, l2, l3, i, j, k);
     }
 }
+
