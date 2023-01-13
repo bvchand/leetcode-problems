@@ -15,3 +15,7 @@ class Solution {
         return false;
     }
 }
+
+// prefix sum
+// calculate the cumulative sum at every index and add the rem to a hash map
+// if the rem already exists and the previous index and the current index > 1 --> true
