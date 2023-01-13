@@ -4,7 +4,7 @@ class Solution {
     private boolean checkInterleave(char[] s1, char[] s2, char[] s3, int l1, int l2, int l3, int i, int j, int k) {
         String key = Integer.toString(i) + "#" + Integer.toString(j) + "#" + Integer.toString(k);
         
-        // if reached the end of s3, it means it is interleaved
+        // if reached the end of s3, return true
         if(k == l3)
             return i == l1 && j == l2;
         
